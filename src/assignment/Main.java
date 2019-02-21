@@ -9,15 +9,15 @@ public class Main {
 
 class NamePrinter {
     /**
-     * Prints the names of the group members separated by dashes.
+     * Prints the names of the group members separated by commas.
      */
     public void printNames() {
-        String separator = "-";
+        String separator = ",";
 
         String[] names = {
                 "Chris Jung",
                 "Andrew Fields",
-                "Name 3",
+                "Stuart J Small",
                 "Name 4",
                 "Name 5"};
 
