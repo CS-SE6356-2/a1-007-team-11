@@ -1,6 +1,7 @@
+package src;
 
 class Player {
-	public Hand hand;
+	protected Hand hand;
 	
 	void chooseCard(Player targetPlayer) {
 		// This function requires the graphics class

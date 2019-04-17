@@ -1,3 +1,5 @@
+package src;
+
 import java.util.*;
 
 class Hand {
@@ -24,7 +26,7 @@ class Hand {
 				}
 			}
 		}
-		
+
 		return discard;
 	}
 	

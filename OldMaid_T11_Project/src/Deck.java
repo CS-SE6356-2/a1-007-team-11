@@ -1,3 +1,4 @@
+package src;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,20 +8,24 @@ public class Deck {
 	List<Card> cardList = new ArrayList<Card>();
 	
 	//default constructor
-	Deck(){
+	public Deck(){
 		Card temp = new Card();
 		String suit = "";
 		//loop each suit type
 		for(int i = 1; i <= 4; i++) {
 			switch(i) {
 				case 1:
-					suit = "Diamonds";
+					//Diamond Case
+					suit = "D";
 				case 2:
-					suit = "Clubs";
+					//Club Case
+					suit = "C";
 				case 3:
-					suit = "Hearts";
+					//Heart Case
+					suit = "H";
 				case 4:
-					suit = "Spades";
+					//Spade Case
+					suit = "S";
 				}
 			//set cards for each suit
 			for(int j = 1; j < 14; j++) {
@@ -30,7 +35,7 @@ public class Deck {
 			}
 		}
 		//add Joker
-		temp.setSuit("Joker");
+		temp.setSuit("J");
 		temp.setValue(0);
 		cardList.add(temp);
 	}
