@@ -9,7 +9,6 @@ public class Deck {
 	
 	//default constructor
 	public Deck(){
-		Card temp = new Card();
 		cardList= new ArrayList<>();
 		String suit = "";
 		//loop each suit type
@@ -34,15 +33,17 @@ public class Deck {
 				}
 			//set cards for each suit
 			for(int j = 1; j < 14; j++) {
+				Card temp = new Card();
 				temp.setSuit(suit);
 				temp.setValue(j);
 				cardList.add(temp);
 			}
 		}
 		//add Joker
-		temp.setSuit("J");
-		temp.setValue(0);
-		cardList.add(temp);
+		Card joker = new Card();
+		joker.setSuit("J");
+		joker.setValue(0);
+		cardList.add(joker);
 	}
 	
 	//deals first card out, removing it from the deck
