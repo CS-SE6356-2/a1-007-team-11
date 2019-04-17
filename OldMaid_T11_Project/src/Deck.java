@@ -47,11 +47,9 @@ public class Deck {
 	}
 	
 	//deals first card out, removing it from the deck
-	//issue with 0 J being always removed
 	public Card deal() {
 		Card temp = cardList.get(0);
 		cardList.remove(0);
-//		System.out.println("Removing "+ cardList.get(0).getSuit()+" "+cardList.get(0).getValue());
 		return temp;
 	}
 	

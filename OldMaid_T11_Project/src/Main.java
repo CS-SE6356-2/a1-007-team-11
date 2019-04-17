@@ -30,6 +30,9 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+//For eclipse
+// 		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Menu.fxml"));
+//For Intellj
 		Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
 		primaryStage.setTitle("Old Maid");
 		Scene scene = new Scene(root, 375, 205);
