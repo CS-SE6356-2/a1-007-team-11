@@ -1,7 +1,10 @@
 package src;
 
 import java.util.*;
-public class Game 
+
+import static src.Main.game;
+
+public class Game
 {
 	protected int numPlayers;
 	protected List<Card> discardPile;
@@ -11,9 +14,10 @@ public class Game
 
 	public Game(int numPlayers) {
 		this.numPlayers = numPlayers;
-		playerList=new ArrayList<>(numPlayers);
+		playerList=new ArrayList<>();
 		deck=new Deck();
 		discardPile=new ArrayList<>();
+		populateGame(this.numPlayers,playerList);
 	}
 
 	public Game(){
@@ -22,6 +26,11 @@ public class Game
 		discardPile=new ArrayList<>();
 	}
 
+	public void populateGame(int numPlayers, List<Player> playerL){
+		for(int i=0;i<numPlayers;i++){
+			playerL.add(new Player());
+		}
+	}
 	public void gameOver()
 	{
 		gameIsOver = true;
@@ -34,4 +43,5 @@ public class Game
 	public List<Card> getDiscardPile(){
 		return discardPile;
 	}
+
 }

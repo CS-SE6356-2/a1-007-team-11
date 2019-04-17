@@ -10,6 +10,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main extends Application {
@@ -42,7 +44,25 @@ public class Main extends Application {
 			//play the game
 		}
 		Graphics.displayAlert("Game Over","The game is over. The loser is...",true);
-}
+	}
+
+	public static void setup(int numPlayers)
+	{
+		game = new Game(numPlayers);
+		game.deck.shuffle();
+		while(!game.deck.cardList.isEmpty()){
+			for(int i=0;i<numPlayers && game.deck.cardList.size()>0;i++){
+				game.playerList.get(i).hand.myHand.add(game.deck.deal());
+				game.playerList.get(i).hand.handSize++;
+			}
+		}
+	}
+
+	static protected void replay()
+	{
+		if (game.gameIsOver)
+			game = new Game();
+	}
 
 	public void create()
 	{
@@ -52,22 +72,6 @@ public class Main extends Application {
 	public void join()
 	{
 
-	}
-
-	public static void setup(int numPlayers)
-	{
-//		game = new Game(numPlayers);
-//		while(!game.deck.cardList.isEmpty()){
-////			for(int i=0;i<numPlayers+1;i++){
-////				game.playerList.get(i).hand.myHand.add(game.deck.deal());
-////			}
-//		}
-	}
-
-	static protected void replay()
-	{
-		if (game.gameIsOver)
-			game = new Game();
 	}
 
 }
