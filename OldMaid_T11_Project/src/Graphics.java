@@ -47,8 +47,6 @@ public class Graphics implements Initializable{
 	public HBox cardPane;
 	Main m=new Main();
 
-
-
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		cardPane=new HBox();
@@ -56,15 +54,13 @@ public class Graphics implements Initializable{
 		drawPlayerHand(game.currentPlayer);
 		updateView(cardPane);
 		scrollPane.setContent(cardPane);
-
-
 	}
-
 
 	//initial drawing of the hands once the deck has been dealt
 	private void drawPlayerHand(Player p){
-		for (int j=0; j<p.hand.handSize;j++){
+		for (int j=0; j<p.hand.myHand.size();j++){
 			Card currentCard=p.hand.myHand.get(j);
+			System.out.println("j: "+j+" p:"+p+" p.handsize "+p.hand.myHand.size());
 			String cardImgSrc="file:OldMaid_T11_Project/img/"+currentCard.getValue()+currentCard.getSuit()+".png";
 			imgList.add(new Image(cardImgSrc,140,190,true,true));
 		}
@@ -96,43 +92,54 @@ public class Graphics implements Initializable{
 	public void passAction(ActionEvent event)throws Exception{
 		game.passTurn();
 		m.changeScene();
-		game.currentPlayer.takeCard(displayCardSelectionPrompt());
+//		game.currentPlayer.takeCard(displayCardSelectionPrompt());
 	}
 
-//	public static int displayCardSelectionPrompt(){
-//		int cardLocation=0;
-//		Stage cardSelectionPromptWindow= new Stage();
-//		cardSelectionPromptWindow.initModality(Modality.APPLICATION_MODAL);
-//		cardSelectionPromptWindow.setTitle("Card Selection");
-//		cardSelectionPromptWindow.setMinWidth(250);
-//
-//
-//		Label msgLabel=new Label();
-//		msgLabel.setText("Select Card");
-//		msgLabel.setPadding(new Insets(15,15,15,15));
-//		msgLabel.setFont(Font.font("Courier New", FontWeight.BOLD,20));
-//
-//
-//
-//		TextField inputBox= new TextField();
-//
-//		Button submitInput=new Button();
-//		submitInput.setText("Submit");
-//
-//		HBox hBoxInput=new HBox();
-//		hBoxInput.getChildren().addAll(inputBox,submitInput);
-//		hBoxInput.setAlignment(Pos.CENTER);
-//		hBoxInput.setSpacing(5);
-//
-//		VBox layout=new VBox(10);
-//		layout.getChildren().addAll(msgLabel,hBoxInput);
-//		layout.setAlignment(Pos.CENTER);
-//
-//		Scene scene= new Scene(layout);
-//
-//		cardSelectionPromptWindow.setScene(scene);
-//		cardSelectionPromptWindow.showAndWait();
-//		return cardLocation;
-//	}
+	public static int displayCardSelectionPrompt(){
+		final int[] cardLocation = new int[1];
+		String prompt= "Select Card between 1-"+game.prevPlayer.hand.myHand.size();
+		Stage cardSelectionPromptWindow= new Stage();
+		cardSelectionPromptWindow.initModality(Modality.APPLICATION_MODAL);
+		cardSelectionPromptWindow.setTitle("Card Selection");
+		cardSelectionPromptWindow.setMinWidth(250);
 
+
+		javafx.scene.control.Label msgLabel=new javafx.scene.control.Label();
+		msgLabel.setText(prompt);
+		msgLabel.setPadding(new Insets(15,15,15,15));
+		msgLabel.setFont(Font.font("Courier New", FontWeight.BOLD,20));
+
+		javafx.scene.control.TextField inputBox= new javafx.scene.control.TextField();
+
+		javafx.scene.control.Button submitInput=new Button();
+		submitInput.setText("Submit");
+		submitInput.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				if(inputBox.getText()==null){
+					mController.displaySelectionAlert("Input Needed", "Enter the card you'd like to submit");
+				}else if(isNumeric(inputBox.getText())){
+					cardLocation[0] =Integer.parseInt(inputBox.getText());
+				}else{
+					mController.displaySelectionAlert("Input Needed", "Enter a Integer value");
+
+				}
+			}
+		});
+
+		HBox hBoxInput=new HBox();
+		hBoxInput.getChildren().addAll(inputBox,submitInput);
+		hBoxInput.setAlignment(Pos.CENTER);
+		hBoxInput.setSpacing(5);
+
+		VBox layout=new VBox(10);
+		layout.getChildren().addAll(msgLabel,hBoxInput);
+		layout.setAlignment(Pos.CENTER);
+
+		Scene scene= new Scene(layout);
+
+		cardSelectionPromptWindow.setScene(scene);
+		cardSelectionPromptWindow.showAndWait();
+		return cardLocation[0]-1;
+	}
 }

@@ -64,7 +64,6 @@ public class Main extends Application {
 		Parent root = FXMLLoader.load(getClass().getResource("View.fxml"));
 		view = new Scene(root, 800, 675);
 		storeStage.setScene(view);
-		storeStage.setMaximized(true);
 		storeStage.show();
 	}
 
@@ -113,40 +112,48 @@ public class Main extends Application {
 
 	}
 
-	public static int displayCardSelectionPrompt(){
-		int cardLocation=0;
-		Stage cardSelectionPromptWindow= new Stage();
-		cardSelectionPromptWindow.initModality(Modality.APPLICATION_MODAL);
-		cardSelectionPromptWindow.setTitle("Card Selection");
-		cardSelectionPromptWindow.setMinWidth(250);
-
-
-		javafx.scene.control.Label msgLabel=new javafx.scene.control.Label();
-		msgLabel.setText("Select Card");
-		msgLabel.setPadding(new Insets(15,15,15,15));
-		msgLabel.setFont(Font.font("Courier New", FontWeight.BOLD,20));
-
-
-
-		javafx.scene.control.TextField inputBox= new javafx.scene.control.TextField();
-
-		javafx.scene.control.Button submitInput=new Button();
-		submitInput.setText("Submit");
-
-		HBox hBoxInput=new HBox();
-		hBoxInput.getChildren().addAll(inputBox,submitInput);
-		hBoxInput.setAlignment(Pos.CENTER);
-		hBoxInput.setSpacing(5);
-
-		VBox layout=new VBox(10);
-		layout.getChildren().addAll(msgLabel,hBoxInput);
-		layout.setAlignment(Pos.CENTER);
-
-		Scene scene= new Scene(layout);
-
-		cardSelectionPromptWindow.setScene(scene);
-		cardSelectionPromptWindow.showAndWait();
-		return cardLocation;
+	public static boolean isNumeric(String strNum){
+		try{
+			int value= Integer.parseInt(strNum);
+		}catch (NumberFormatException|NullPointerException e){
+			return false;
+		}
+		return true;
 	}
+//	public static int displayCardSelectionPrompt(){
+//		int cardLocation=0;
+//		Stage cardSelectionPromptWindow= new Stage();
+//		cardSelectionPromptWindow.initModality(Modality.APPLICATION_MODAL);
+//		cardSelectionPromptWindow.setTitle("Card Selection");
+//		cardSelectionPromptWindow.setMinWidth(250);
+//
+//
+//		javafx.scene.control.Label msgLabel=new javafx.scene.control.Label();
+//		msgLabel.setText("Select Card");
+//		msgLabel.setPadding(new Insets(15,15,15,15));
+//		msgLabel.setFont(Font.font("Courier New", FontWeight.BOLD,20));
+//
+//
+//
+//		javafx.scene.control.TextField inputBox= new javafx.scene.control.TextField();
+//
+//		javafx.scene.control.Button submitInput=new Button();
+//		submitInput.setText("Submit");
+//
+//		HBox hBoxInput=new HBox();
+//		hBoxInput.getChildren().addAll(inputBox,submitInput);
+//		hBoxInput.setAlignment(Pos.CENTER);
+//		hBoxInput.setSpacing(5);
+//
+//		VBox layout=new VBox(10);
+//		layout.getChildren().addAll(msgLabel,hBoxInput);
+//		layout.setAlignment(Pos.CENTER);
+//
+//		Scene scene= new Scene(layout);
+//
+//		cardSelectionPromptWindow.setScene(scene);
+//		cardSelectionPromptWindow.showAndWait();
+//		return cardLocation;
+//	}
 
 }

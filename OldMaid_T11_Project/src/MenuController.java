@@ -40,14 +40,13 @@ public class MenuController implements Initializable {
         storeStage= (Stage)((Node)event.getSource()).getScene().getWindow();
         if(twoPlayer.isSelected()){
             Main.setup(2);
-//            graphics.changeScene("View.fxml");
             m.changeScene();
         }else if(threePlayer.isSelected()){
             Main.setup(3);
             m.changeScene();
         }else if(fourPlayer.isSelected()){
-            m.changeScene();
             Main.setup(4);
+            m.changeScene();
         }else{
             displaySelectionAlert("Warning!", "\tWarning: Selection Needed.\n Please make a selection and try again.");
         }
