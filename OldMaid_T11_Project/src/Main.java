@@ -1,4 +1,4 @@
-package src;
+//package src;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,7 +28,7 @@ public class Main extends Application {
 
 	}
 
-	@Override
+	//@Override
 	public void start(Stage primaryStage) throws Exception {
 //For eclipse
 // 		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Menu.fxml"));
@@ -38,7 +38,45 @@ public class Main extends Application {
 		Scene scene = new Scene(root, 375, 205);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		Server server = new Server();
+		server.start();
+		server.bind(54555, 54777)
 
+		Kryo kryo = server.getKryo();
+		kryo.register(SampleRequest.class);
+		kryo.register(SampleResponse.class);
+
+		/*server.addListener(new Listener() {
+			public void received (Connection connection, Object object) {
+				if (object instanceof SampleRequest) {
+					SampleRequest request = (SampleRequest)object;
+					System.out.println(request.text);
+
+					SampleResponse response = new SampleResponse();
+					System.out.println(response.text);
+					connection.sendTCP(response);
+				}
+			}
+		});
+		Client client = new Client();
+		client.start();
+		client.connect(5000, "127.0.0.1", 54555, 54777);
+
+		Kryo kryoClient = client.getKryo();
+		kryoClient.register(SampleRequest.class);
+		kryoClient.register(SampleResponse.class);
+
+		SampleRequest request = new SampleRequest();
+		client.sendTCP(request);
+
+		client.addListener(new Listener() {
+			public void received (Connection connection, Object object) {
+				if (object instanceof SampleResponse) {
+					SampleResponse response = (SampleResponse)object;
+					System.out.println(response.text);
+				}
+			}
+		}); */
 	}
 
 	public void play()
