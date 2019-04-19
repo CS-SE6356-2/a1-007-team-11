@@ -10,40 +10,18 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Graphics">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Graphics">
    <bottom>
-      <VBox spacing="5.0" style="-fx-background-color: teal;" BorderPane.alignment="CENTER">
+      <VBox fx:id="vBox" spacing="5.0" style="-fx-background-color: teal;" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane fx:id="scrollPane" pannable="true" vbarPolicy="NEVER">
-               <content>
-                  <HBox fx:id="cardPane">
-                     <children>
-                        <ImageView fx:id="card1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/2D.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/2D.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-               </content>
-            </ScrollPane>
+            <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;" />
             <ToolBar>
               <items>
-                <Button fx:id="discardButton" alignment="CENTER" mnemonicParsing="false" onAction="#discardAction" text="Discard Cards">
-                     <padding>
-                        <Insets left="15.0" right="15.0" />
-                     </padding></Button>
-                  <Button fx:id="passButton" alignment="CENTER" mnemonicParsing="false" text="Pass">
+                  <Button fx:id="passButton" alignment="CENTER" mnemonicParsing="false" onAction="#passAction" stylesheets="@../css/stylesheet.css" text="Pass">
                      <padding>
                         <Insets left="15.0" right="15.0" />
                      </padding></Button>
@@ -56,19 +34,6 @@
                      </padding>
                   </Label>
                   <Label fx:id="discardCount" text="0/53">
-                     <font>
-                        <Font name="Courier New Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="23.0" prefWidth="113.0" text="Turn Count:">
-                     <font>
-                        <Font name="Courier New Bold Italic" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets left="15.0" right="-5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="1/4">
                      <font>
                         <Font name="Courier New Bold" size="14.0" />
                      </font>
@@ -88,7 +53,7 @@
       </VBox>
    </bottom>
    <center>
-      <GridPane style="-fx-background-color: teal;" BorderPane.alignment="CENTER">
+      <GridPane fx:id="gridPane" style="-fx-background-color: teal;" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -100,11 +65,11 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Old Maid" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+            <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-underline: true; -fx-label-padding: 4;" text="Old Maid" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                <font>
                   <Font name="Courier New Bold Italic" size="32.0" />
                </font></Label>
-            <ImageView fitHeight="95.0" fitWidth="60.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" rotate="-90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <ImageView fitHeight="151.0" fitWidth="82.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" rotate="-90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <image>
                   <Image url="@../img/gray_back.png" />
                </image>
@@ -116,6 +81,14 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+            </Label>
+            <Label fx:id="currentPlayerLabel" prefHeight="23.0" prefWidth="124.0" text="Current Player: 1/4" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+               <font>
+                  <Font name="Courier New Bold Italic" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
             </Label>
          </children>
       </GridPane>

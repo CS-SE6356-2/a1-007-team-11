@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="183.0" prefWidth="351.0" style="-fx-background-color: teal; -fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Graphics">
+<VBox fx:id="vBoxMenu" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="183.0" prefWidth="351.0" style="-fx-background-color: teal; -fx-border-color: black; -fx-border-width: 5;" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.MenuController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" text="Old Maid">
+      <Label alignment="CENTER" contentDisplay="CENTER" stylesheets="@../css/stylesheet.css" text="Old Maid">
          <font>
             <Font name="Courier New Bold Italic" size="32.0" />
          </font></Label>
-      <Button fx:id="startButton" mnemonicParsing="false" onAction="#startGame" text="Start Game">
+      <Button fx:id="stButton" mnemonicParsing="false" onAction="#startGame" stylesheets="@../css/stylesheet.css" text="Start Game">
          <VBox.margin>
             <Insets bottom="10.0" top="10.0" />
          </VBox.margin>

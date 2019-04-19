@@ -1,0 +1,99 @@
+/*Color Schemes: Vintage Charm- #CDA34F,#E9E7DA,636B46,#373F27
+                 Simple and Fresh- #414141,#CCDFCB,#FF6A5C,#0565
+*/
+#discardButton {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #CDA34F 0%, #cc972e 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #CDA34F, #c19336);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+#discardButton:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+#discardButton:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+#discardButton Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
+
+#passButton {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+#passButton:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+#passButton:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+#passButton Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
+
+#gridPane{
+
+}
+/*
+Styles for StartButton on Menu
+*/#stButton{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 6 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #CDA34F 0%, #846d3f 100%),
+        #cd904f,
+        #c48b4e,
+        radial-gradient(center 50% 50%, radius 100%, #CDA34F, #E9E7DA);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+
+#stButton:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #ba9346 0%, #776238 100%),
+        #af8734,
+        #CDA34F,
+        radial-gradient(center 50% 50%, radius 100%, #af8734, #CDA34F);
+}
+#stButton:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+#stButton Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
+
+#vBoxMenu{
+    -fx-background-color: #636B46;
+}
