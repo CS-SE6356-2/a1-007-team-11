@@ -1,42 +1,36 @@
 package src;
+import gui.Graphics;
+import gui.MenuController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Main extends Application {
 
-	protected static Game game;
-	protected static ActionEvent event;
-	protected static Graphics graphics;
-	protected static MenuController mController;
-	protected static Stage storeStage;
-	protected static Scene menu,view;
+	public static Game game;
+	public static ActionEvent event;
+	public static Graphics graphics;
+	public static MenuController mController;
+	public static Stage storeStage;
+	public static Scene menu,view;
 
 //	protected static Parent root;
 
 	public static void main(String[] args)
 	{
-		graphics = new Graphics();
-		mController=new MenuController();
+//		graphics = new Graphics();
+//		mController=new MenuController();
 		launch(args);
 
 	}
@@ -47,7 +41,7 @@ public class Main extends Application {
 //		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Menu.fxml"));
 //		For Intellj
 		storeStage=primaryStage;
-		Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../gui/ServerMenu.fxml"));
 		storeStage.setTitle("Old Maid");
 		menu = new Scene(root, 375, 205);
 
@@ -56,13 +50,16 @@ public class Main extends Application {
 
 	}
 
-	protected void changeScene() throws Exception{
+	public void changeScene(String file) throws Exception{
 //		For eclipse
 //		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Menu.fxml"));
 //		For Intellj
 
-		Parent root = FXMLLoader.load(getClass().getResource("View.fxml"));
-		view = new Scene(root, 800, 675);
+		Parent root = FXMLLoader.load(getClass().getResource(file));
+		if(file=="../gui/View.fxml"){
+			storeStage.setMaximized(true);
+		}
+		view = new Scene(root, 350, 182);
 		storeStage.setScene(view);
 		storeStage.show();
 	}
@@ -86,14 +83,9 @@ public class Main extends Application {
 			}
 		}
 
-//		String returned="";
-//		for(int i=0;i<game.playerList.size();i++){
-//			returned+="Player "+i+"\n";
-//			for(int j=0; j<game.playerList.get(i).hand.myHand.size();j++){
-//				returned+=game.playerList.get(i).hand.myHand.get(j).getValue()+game.playerList.get(i).hand.myHand.get(j).getSuit()+"\n";
-//			}
-//		}
-//		System.out.println(returned);
+		for(int i=0;i<game.playerList.size();i++){
+			game.playerList.get(i).hand.discardPairs();
+		}
 	}
 
 	static protected void replay()
@@ -120,40 +112,28 @@ public class Main extends Application {
 		}
 		return true;
 	}
-//	public static int displayCardSelectionPrompt(){
-//		int cardLocation=0;
-//		Stage cardSelectionPromptWindow= new Stage();
-//		cardSelectionPromptWindow.initModality(Modality.APPLICATION_MODAL);
-//		cardSelectionPromptWindow.setTitle("Card Selection");
-//		cardSelectionPromptWindow.setMinWidth(250);
-//
-//
-//		javafx.scene.control.Label msgLabel=new javafx.scene.control.Label();
-//		msgLabel.setText("Select Card");
-//		msgLabel.setPadding(new Insets(15,15,15,15));
-//		msgLabel.setFont(Font.font("Courier New", FontWeight.BOLD,20));
-//
-//
-//
-//		javafx.scene.control.TextField inputBox= new javafx.scene.control.TextField();
-//
-//		javafx.scene.control.Button submitInput=new Button();
-//		submitInput.setText("Submit");
-//
-//		HBox hBoxInput=new HBox();
-//		hBoxInput.getChildren().addAll(inputBox,submitInput);
-//		hBoxInput.setAlignment(Pos.CENTER);
-//		hBoxInput.setSpacing(5);
-//
-//		VBox layout=new VBox(10);
-//		layout.getChildren().addAll(msgLabel,hBoxInput);
-//		layout.setAlignment(Pos.CENTER);
-//
-//		Scene scene= new Scene(layout);
-//
-//		cardSelectionPromptWindow.setScene(scene);
-//		cardSelectionPromptWindow.showAndWait();
-//		return cardLocation;
-//	}
 
+
+	//handles alert windows
+	public static void displaySelectionAlert(String title, String msg){
+		Stage selectionAlertWindow= new Stage();
+		selectionAlertWindow.initModality(Modality.APPLICATION_MODAL);
+		selectionAlertWindow.setTitle(title);
+		selectionAlertWindow.setMinWidth(250);
+
+		javafx.scene.control.Label msgLabel=new javafx.scene.control.Label(msg);
+		msgLabel.setText(msg);
+		msgLabel.setPadding(new javafx.geometry.Insets(15,15,15,15));
+		msgLabel.setFont(Font.font("Courier New", FontWeight.BOLD,20));
+
+		VBox layout=new VBox(10);
+		layout.getChildren().add(msgLabel);
+		layout.setAlignment(Pos.CENTER);
+		layout.setBackground(new Background(new BackgroundFill((javafx.scene.paint.Color.TOMATO), CornerRadii.EMPTY, Insets.EMPTY)));
+		layout.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+
+		Scene scene=new Scene(layout);
+		selectionAlertWindow.setScene(scene);
+		selectionAlertWindow.showAndWait();
+	}
 }

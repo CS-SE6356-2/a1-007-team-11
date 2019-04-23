@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="serverMenuVBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="183.0" prefWidth="351.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ServerMenuController">
+    <children>
+        <Label fx:id="titleLabel" text="Old Maid: Server Select" />
+        <Button fx:id="hostButton" mnemonicParsing="false" onAction="#hostAction" text="Host Game" />
+        <HBox alignment="CENTER" prefHeight="37.0" prefWidth="351.0" spacing="5.0">
+            <children>
+                <TextField fx:id="ipInput" promptText="Server IP Address">
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                </TextField>
+                <Button fx:id="joinButton" mnemonicParsing="false" onAction="#joinAction" text="Join Game" />
+            </children>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </HBox>
+    </children>
+</VBox>

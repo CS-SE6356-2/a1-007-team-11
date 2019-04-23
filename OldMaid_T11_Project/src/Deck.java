@@ -5,7 +5,7 @@ import java.util.List;
 
 //Author: Chris Jung cyj170130
 public class Deck {
-	protected List<Card> cardList;
+	public List<Card> cardList;
 	
 	//default constructor
 	public Deck(){

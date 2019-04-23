@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Graphics">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Graphics">
    <bottom>
       <VBox fx:id="vBox" spacing="5.0" style="-fx-background-color: teal;" BorderPane.alignment="CENTER">
          <children>
@@ -53,7 +53,7 @@
       </VBox>
    </bottom>
    <center>
-      <GridPane fx:id="gridPane" style="-fx-background-color: teal;" BorderPane.alignment="CENTER">
+      <GridPane fx:id="gridPane" stylesheets="@../css/stylesheet.css" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -82,7 +82,7 @@
                   <Insets />
                </GridPane.margin>
             </Label>
-            <Label fx:id="currentPlayerLabel" prefHeight="23.0" prefWidth="124.0" text="Current Player: 1/4" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+            <Label fx:id="currentPlayerLabel" prefHeight="23.0" prefWidth="213.0" text="Current Player: 1/4" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                <font>
                   <Font name="Courier New Bold Italic" size="18.0" />
                </font>

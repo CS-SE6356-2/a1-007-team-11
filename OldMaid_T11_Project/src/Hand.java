@@ -2,42 +2,48 @@ package src;
 
 import java.util.*;
 
-class Hand {
+//import static src.Main.convertToIntValues;
+import static src.Main.game;
+
+public class Hand {
 	public Integer handSize;
-	protected List<Card> myHand;
+	public List<Card> myHand;
 	
 	public void reorderHand() {
 		Collections.shuffle(myHand);
 	}
 	
-	public List<Card> discardPairs() {
-		List<Card> discard = new ArrayList<Card>();
+	public void discardPairs() {
 		Card firstCard, secondCard;
-		
-		for(int i = 0; i < myHand.size(); ++i) {
-			firstCard = myHand.get(i);
-			for(int j = i + 1; j < myHand.size(); ++j) {
-				secondCard = myHand.get(j);
+		boolean pairFound=false;
+		for(int i = 0; i < this.myHand.size();i++) {
+			firstCard = this.myHand.get(i);
+			for(int j = i + 1; j < this.myHand.size()&&!pairFound; j++) {
+				secondCard = this.myHand.get(j);
 				if(firstCard.getValue() == secondCard.getValue()) {
-					myHand.remove(i);
-					myHand.remove(j);
-					discard.add(firstCard);
-					discard.add(secondCard);
+					this.myHand.remove(i);
+					this.myHand.remove(j-1);
+					game.discardPile.add(firstCard);
+					game.discardPile.add(secondCard);
+					System.out.println("Discarding pair of "+firstCard.getValue()+" "+secondCard.getValue());
+					pairFound=true;
 				}
+			}
+			if(pairFound){
+				i--;
+				pairFound=false;
 			}
 		}
 
-		return discard;
 	}
 	
 	public void addCard(Card newCard) {
-		myHand.add(newCard);
-		this.discardPairs();
+		this.myHand.add(newCard);
 	}
 	
 	public void removeCard(Player targetPlayer, int targetIndex) {
 		Card targetCard = targetPlayer.hand.myHand.get(targetIndex);
-		targetPlayer.takeCard(targetIndex);
+		targetPlayer.hand.myHand.remove(targetIndex);
 		this.addCard(targetCard);
 	}
 	

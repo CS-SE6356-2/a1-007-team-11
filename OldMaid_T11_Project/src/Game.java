@@ -6,16 +6,16 @@ import static src.Main.game;
 
 public class Game
 {
-	protected int numPlayers;
-	protected List<Card> discardPile;
-	protected Deck deck;
-	protected List<Player> playerList;
-	protected Player currentPlayer,prevPlayer;
-	protected boolean gameIsOver = false;
+    public int numPlayers;
+    public List<Card> discardPile;
+    public Deck deck;
+    public List<Player> playerList;
+    public Player currentPlayer,prevPlayer;
+    public boolean gameIsOver = false;
 
 	public Game(int numPlayers) {
 		this.numPlayers = numPlayers;
-		playerList=new ArrayList<>();
+        playerList=new ArrayList<>();
 		deck=new Deck();
 		discardPile=new ArrayList<>();
 		populateGame(this.numPlayers,playerList);
@@ -34,10 +34,14 @@ public class Game
 			playerL.add(new Player());
 		}
 	}
-	public void gameOver()
+	public boolean gameOverCheck()
 	{
-		gameIsOver = true;
+	    if(discardPile.size()==52){
+            return true;
+        }
+		return false;
 	}
+
 
 	public List<Player> getPlayerList(){
 		return playerList;
