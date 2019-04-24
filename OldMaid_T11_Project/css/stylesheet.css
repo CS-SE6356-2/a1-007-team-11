@@ -1,6 +1,9 @@
 /*Color Schemes: Vintage Charm- #CDA34F,#E9E7DA,636B46,#373F27
                  Simple and Fresh- #414141,#CCDFCB,#FF6A5C,#0565
 */
+/*
+Styles for View
+*/
 #passButton {
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
@@ -33,10 +36,11 @@
 #gridPane{
 
 }
+
 /*
-Styles for StartButton on Menu
+Styles for Menu
 */
-#hstButton{
+#openLobbyButton{
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 6 0;
     -fx-background-radius: 8;
@@ -50,18 +54,18 @@ Styles for StartButton on Menu
     -fx-font-size: 1.1em;
 }
 
-#hstButton:hover {
+#openLobbyButton:hover {
     -fx-background-color: 
         linear-gradient(from 0% 93% to 0% 100%, #ba9346 0%, #776238 100%),
         #af8734,
         #CDA34F,
         radial-gradient(center 50% 50%, radius 100%, #af8734, #CDA34F);
 }
-#hstButton:pressed {
+#openLobbyButton:pressed {
     -fx-padding: 10 15 13 15;
     -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
 }
-#hstButton Text {
+#openLobbyButton Text {
     -fx-fill: white;
     -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
 }
@@ -70,29 +74,121 @@ Styles for StartButton on Menu
     -fx-background-color: #636B46;
 }
 
-#gridPane{
-
-
-
-}
 
 /*
-For ServerMenu
+Styles for ServerMenu
 */
 
 #titleLabel{
 
 }
 
-#hostButton{
-
-}
-
 #ipInput{
-
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
 }
 
+#ipInput:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+}
+
+#joinButton{
+    -fx-padding: 5 5 5 5;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 6 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #CDA34F 0%, #846d3f 100%),
+        #cd904f,
+        #c48b4e,
+        radial-gradient(center 50% 50%, radius 100%, #CDA34F, #E9E7DA);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+
+#joinButton:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #ba9346 0%, #776238 100%),
+        #af8734,
+        #CDA34F,
+        radial-gradient(center 50% 50%, radius 100%, #af8734, #CDA34F);
+}
+#joinButton:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+#joinButton Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
 
 #serverMenuVBox{
+    -fx-background-color: #636B46;
+}
+
+/*
+Styles for JoinLobby and HostLobby
+*/
+
+/*For all back buttons*/
+
+#backButton{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 6 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #CDA34F 0%, #846d3f 100%),
+        #cd904f,
+        #c48b4e,
+        radial-gradient(center 50% 50%, radius 100%, #CDA34F, #E9E7DA);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+
+#backButton:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #ba9346 0%, #776238 100%),
+        #af8734,
+        #CDA34F,
+        radial-gradient(center 50% 50%, radius 100%, #af8734, #CDA34F);
+}
+#backButton:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+#backButton Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
+
+
+
+/*for tables in both join and host*/
+#playerTable{
 
 }
+
+/*for anchor container in host and join*/
+#anchor{
+    -fx-background-color: #636B46;
+}
+
+#lobbyTitle{
+
+}
+
+#rdyButton{
+
+}
+
+/*
+Styles for HostLobby
+*/
+
+#startButton{
+
+}
+
+

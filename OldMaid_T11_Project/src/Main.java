@@ -20,8 +20,6 @@ public class Main extends Application {
 
 	public static Game game;
 	public static ActionEvent event;
-	public static Graphics graphics;
-	public static MenuController mController;
 	public static Stage storeStage;
 	public static Scene menu,view;
 
@@ -29,10 +27,7 @@ public class Main extends Application {
 
 	public static void main(String[] args)
 	{
-//		graphics = new Graphics();
-//		mController=new MenuController();
 		launch(args);
-
 	}
 
 	@Override

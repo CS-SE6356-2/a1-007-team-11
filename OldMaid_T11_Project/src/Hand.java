@@ -2,7 +2,7 @@ package src;
 
 import java.util.*;
 
-//import static src.Main.convertToIntValues;
+//import static src.Main.java.convertToIntValues;
 import static src.Main.game;
 
 public class Hand {

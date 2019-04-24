@@ -140,11 +140,6 @@ public class Graphics implements Initializable{
 				}
 			});
 
-//		cardSelectionPromptWindow.setOnCloseRequest(event ->{
-//			cardSelectionPromptWindow.close();
-//			cardSelectionPromptWindow.showAndWait();
-//		});
-
 			HBox hBoxInput=new HBox();
 			hBoxInput.getChildren().addAll(inputBox,submitInput);
 			hBoxInput.setAlignment(Pos.CENTER);

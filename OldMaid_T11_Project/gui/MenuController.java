@@ -29,7 +29,7 @@ import static src.Main.*;
 
 public class MenuController implements Initializable {
     public Stage storeStage;
-    @FXML public Button bckButton;
+    @FXML public Button bckButton, openLobbyButton;
     @FXML public RadioButton twoPlayer, threePlayer,fourPlayer;
     @FXML public VBox vBoxMenu;
     Main m=new Main();
@@ -39,11 +39,12 @@ public class MenuController implements Initializable {
 
     }
 
-    public void startGame(ActionEvent event) throws Exception{
+    public void openLobby(ActionEvent event) throws Exception{
         storeStage= (Stage)((Node)event.getSource()).getScene().getWindow();
         if(twoPlayer.isSelected()){
             Main.setup(2);
             m.changeScene("../gui/HostLobby.fxml");
+//            game.playerList.get(0).setName();
         }else if(threePlayer.isSelected()){
             Main.setup(3);
             m.changeScene("../gui/HostLobby.fxml");
@@ -59,30 +60,5 @@ public class MenuController implements Initializable {
     public void backToServerMenu()throws Exception{
         m.changeScene("../gui/ServerMenu.fxml");
     }
-
-
-//    //handles alert windows
-//    public static void displaySelectionAlert(String title, String msg){
-//        Stage selectionAlertWindow= new Stage();
-//        selectionAlertWindow.initModality(Modality.APPLICATION_MODAL);
-//        selectionAlertWindow.setTitle(title);
-//        selectionAlertWindow.setMinWidth(250);
-//
-//        javafx.scene.control.Label msgLabel=new javafx.scene.control.Label(msg);
-//        msgLabel.setText(msg);
-//        msgLabel.setPadding(new javafx.geometry.Insets(15,15,15,15));
-//        msgLabel.setFont(Font.font("Courier New", FontWeight.BOLD,20));
-//
-//        VBox layout=new VBox(10);
-//        layout.getChildren().add(msgLabel);
-//        layout.setAlignment(Pos.CENTER);
-//        layout.setBackground(new Background(new BackgroundFill((javafx.scene.paint.Color.TOMATO), CornerRadii.EMPTY, Insets.EMPTY)));
-//        layout.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
-//
-//        Scene scene=new Scene(layout);
-//        selectionAlertWindow.setScene(scene);
-//        selectionAlertWindow.showAndWait();
-//    }
-
 
 }

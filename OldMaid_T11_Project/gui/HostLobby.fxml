@@ -6,17 +6,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="449.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HostLobbyController">
+<AnchorPane id="anchor" fx:id="n" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="449.0" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HostLobbyController">
    <children>
-      <TableView layoutX="101.0" layoutY="66.0" prefHeight="172.0" prefWidth="322.0">
+      <TableView id="playerTable" layoutX="101.0" layoutY="66.0" prefHeight="172.0" prefWidth="322.0" stylesheets="@../css/stylesheet.css">
          <columns>
             <TableColumn prefWidth="95.20001220703125" text="Player Name" />
             <TableColumn prefWidth="102.40000915527344" text="Roll" />
             <TableColumn prefWidth="73.5999755859375" text="Ready" />
          </columns>
       </TableView>
-      <Label layoutX="188.0" layoutY="18.0" text="Old Maid: Game Lobby" />
-      <Button fx:id="startGameButton" layoutX="16.0" layoutY="177.0" mnemonicParsing="false" onAction="#startGame" prefHeight="61.0" prefWidth="75.0" text="Start Game" />
-      <Button fx:id="hostBackButton" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToServerMenu" text="Back" />
+      <Label id="lobbyTitle" layoutX="188.0" layoutY="18.0" stylesheets="@../css/stylesheet.css" text="Old Maid: Game Lobby" />
+      <Button id="startButton" fx:id="startGameButton" layoutX="16.0" layoutY="177.0" mnemonicParsing="false" onAction="#startGame" prefHeight="61.0" prefWidth="75.0" stylesheets="@../css/stylesheet.css" text="Start Game" />
+      <Button id="backButton" fx:id="hostBackButton" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToServerMenu" stylesheets="@../css/stylesheet.css" text="Back" />
    </children>
 </AnchorPane>

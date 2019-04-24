@@ -7,18 +7,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="serverMenuVBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="183.0" prefWidth="351.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ServerMenuController">
+<VBox id="serverMenuVBox" fx:id="serverMenuVBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="183.0" prefWidth="351.0" spacing="10.0" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ServerMenuController">
     <children>
-        <Label fx:id="titleLabel" text="Old Maid: Server Select" />
-        <Button fx:id="hostButton" mnemonicParsing="false" onAction="#hostAction" text="Host Game" />
+        <Label id="titleLabel" fx:id="titleLabel" stylesheets="@../css/stylesheet.css" text="Old Maid: Server Select" />
+        <Button id="hstButton" fx:id="hostButton" mnemonicParsing="false" onAction="#hostAction" stylesheets="@../css/stylesheet.css" text="Host Game" />
         <HBox alignment="CENTER" prefHeight="37.0" prefWidth="351.0" spacing="5.0">
             <children>
-                <TextField fx:id="ipInput" promptText="Server IP Address">
+                <TextField id="ipInput" fx:id="ipInput" promptText="Server IP Address" stylesheets="@../css/stylesheet.css">
                     <HBox.margin>
                         <Insets />
                     </HBox.margin>
                 </TextField>
-                <Button fx:id="joinButton" mnemonicParsing="false" onAction="#joinAction" text="Join Game" />
+                <Button id="joinButton" fx:id="joinButton" mnemonicParsing="false" onAction="#joinAction" stylesheets="@../css/stylesheet.css" text="Join Game" />
             </children>
             <VBox.margin>
                 <Insets />
