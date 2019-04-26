@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="gridPane" fx:id="borderPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="981.0" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Graphics">
+   <bottom>
+      <VBox fx:id="vBox" spacing="5.0" stylesheets="@../css/stylesheet.css" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane id="scPane" fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/stylesheet.css" />
+            <ToolBar id="tBar" stylesheets="@../css/stylesheet.css">
+              <items>
+                  <Button fx:id="passButton" alignment="CENTER" mnemonicParsing="false" onAction="#passAction" stylesheets="@../css/stylesheet.css" text="Pass">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding></Button>
+                  <Label id="textDisplayTBar" stylesheets="@../css/stylesheet.css" text="Discard Pile Size:" textAlignment="CENTER">
+                     <font>
+                        <Font name="Courier New Bold Italic" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <Label id="textDisplayTBar" fx:id="discardCount" stylesheets="@../css/stylesheet.css" text="0/53">
+                     <font>
+                        <Font name="Courier New Bold" size="14.0" />
+                     </font>
+                  </Label>
+              </items>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ToolBar>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </bottom>
+   <center>
+      <GridPane id="vBoxSC" fx:id="gridPane" stylesheets="@../css/stylesheet.css" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label id="viewTitle" alignment="CENTER" contentDisplay="CENTER" stylesheets="@../css/stylesheet.css" text="Old Maid" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+               <font>
+                  <Font name="Courier New Bold Italic" size="32.0" />
+               </font></Label>
+            <ImageView fitHeight="201.0" fitWidth="125.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" rotate="-90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <image>
+                  <Image url="@../img/gray_back.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="TEXT_ONLY" text="Discard Pile" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="Courier New Italic" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <Label id="currentPlayerLabel" fx:id="currentPlayerLabel" prefHeight="23.0" prefWidth="354.0" stylesheets="@../css/stylesheet.css" text="Current Player: 1/4" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+               <font>
+                  <Font name="Courier New Bold Italic" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
