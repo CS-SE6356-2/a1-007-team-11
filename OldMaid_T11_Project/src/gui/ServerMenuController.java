@@ -1,5 +1,5 @@
 package gui;
-import static src.Main.*;
+import static game.Main.*;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,10 +12,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import src.Card;
-import src.Main;
-import src.server.*;
+import game.Card;
+import game.Main;
+import server.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -40,10 +41,11 @@ public class ServerMenuController implements Initializable {
     @FXML
     protected void hostAction(ActionEvent event)throws Exception{
         //server start
+        /*
         KryoServer hosted_game = new KryoServer();
         try{
 
-        }catch(IOException e){}
+        }catch(IOException e){}*/
         m.changeScene("../gui/Menu.fxml");
 
     }

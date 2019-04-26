@@ -12,14 +12,15 @@ import javafx.scene.control.TableView;
 import javafx.beans.property.ReadOnlyStringWrapper;
 
 import javafx.scene.control.cell.PropertyValueFactory;
-import src.Main;
-import src.Player;
+import game.Main;
+import game.Player;
 
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static src.Main.game;
+//import static src.Main.game;
+import static game.Main.game;
 
 public class HostLobbyController implements Initializable {
 

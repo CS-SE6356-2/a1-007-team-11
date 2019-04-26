@@ -13,7 +13,7 @@ public class KryoServer{
     public Server server = new Server();
 
     //default constructor
-    KryoServer(){
+    public KryoServer(){
 
         server.start();
         try {
