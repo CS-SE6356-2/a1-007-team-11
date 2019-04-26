@@ -38,7 +38,7 @@ public class Main extends Application {
 //		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Menu.fxml"));
 //		For Intellj
 		storeStage=primaryStage;
-		Parent root = FXMLLoader.load(getClass().getResource("gui/ServerMenu.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../gui/ServerMenu.fxml"));
 		storeStage.setTitle("Old Maid");
 		menu = new Scene(root);
 
