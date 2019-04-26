@@ -43,8 +43,9 @@ public class MenuController implements Initializable {
         storeStage= (Stage)((Node)event.getSource()).getScene().getWindow();
         if(twoPlayer.isSelected()){
             Main.setup(2);
+            game.playerList.get(0).setName(nameRequest());
             m.changeScene("../gui/HostLobby.fxml");
-//            game.playerList.get(0).setName();
+
         }else if(threePlayer.isSelected()){
             Main.setup(3);
             m.changeScene("../gui/HostLobby.fxml");

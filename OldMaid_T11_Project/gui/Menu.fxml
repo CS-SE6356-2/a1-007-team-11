@@ -9,17 +9,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="vBoxMenu" fx:id="vBoxMenu" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="182.0" prefWidth="350.0" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuController">
+<VBox id="vBoxMenu" fx:id="vBoxMenu" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="189.0" prefWidth="358.0" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuController">
    <children>
       <HBox maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="342.0">
          <children>
             <Button id="backButton" fx:id="bckButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#backToServerMenu" stylesheets="@../css/stylesheet.css" text="Back" />
          </children>
       </HBox>
-      <Label alignment="CENTER" contentDisplay="CENTER" stylesheets="@../css/stylesheet.css" text="Old Maid">
+      <Label id="titleLabel" alignment="CENTER" contentDisplay="CENTER" stylesheets="@../css/stylesheet.css" text="Old Maid">
          <font>
             <Font name="Courier New Bold Italic" size="32.0" />
-         </font></Label>
+         </font>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin></Label>
       <Button fx:id="openLobbyButton" mnemonicParsing="false" onAction="#openLobby" stylesheets="@../css/stylesheet.css" text="Open Lobby">
          <VBox.margin>
             <Insets bottom="10.0" top="10.0" />
@@ -30,18 +33,18 @@
       </Button>
       <HBox alignment="CENTER" prefHeight="30.0" VBox.vgrow="ALWAYS">
          <children>
-            <RadioButton fx:id="twoPlayer" mnemonicParsing="false" text="2-Player" textAlignment="CENTER">
+            <RadioButton id="radio" fx:id="twoPlayer" mnemonicParsing="false" stylesheets="@../css/stylesheet.css" text="2-Player" textAlignment="CENTER">
                <HBox.margin>
                   <Insets left="15.0" right="15.0" />
                </HBox.margin>
                <toggleGroup>
                   <ToggleGroup fx:id="radioSelect" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="threePlayer" mnemonicParsing="false" text="3- Player" toggleGroup="$radioSelect">
+            <RadioButton id="radio" fx:id="threePlayer" mnemonicParsing="false" stylesheets="@../css/stylesheet.css" text="3- Player" toggleGroup="$radioSelect">
                <HBox.margin>
                   <Insets left="15.0" right="15.0" />
                </HBox.margin></RadioButton>
-            <RadioButton fx:id="fourPlayer" mnemonicParsing="false" text="4-Player" toggleGroup="$radioSelect">
+            <RadioButton id="radio" fx:id="fourPlayer" mnemonicParsing="false" stylesheets="@../css/stylesheet.css" text="4-Player" toggleGroup="$radioSelect">
                <HBox.margin>
                   <Insets left="15.0" right="15.0" />
                </HBox.margin></RadioButton>

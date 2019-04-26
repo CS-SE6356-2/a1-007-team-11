@@ -52,13 +52,14 @@ public class Graphics implements Initializable{
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		String numDiscarded= game.discardPile.size()+"/53";
-		String playerTracker= "Current Player:"+game.currentPlayer.name;
+		String playerTracker= "Current Player:"+game.currentPlayer.getName();
 		discardCount.setText(numDiscarded);
 		currentPlayerLabel.setText(playerTracker);
 		cardPane=new HBox();
 		cardPane.setStyle("-fx-background-color: grey");
 		drawPlayerHand(game.currentPlayer);
 		updateView(cardPane);
+		storeStage.setMaximized(true);
 		scrollPane.setContent(cardPane);
 	}
 
@@ -66,7 +67,6 @@ public class Graphics implements Initializable{
 	private void drawPlayerHand(Player p){
 		for (int j=0; j<p.hand.myHand.size();j++){
 			Card currentCard=p.hand.myHand.get(j);
-			System.out.println("j: "+j+" p:"+p+" p.handsize "+p.hand.myHand.size());
 			String cardImgSrc="file:OldMaid_T11_Project/img/"+currentCard.getValue()+currentCard.getSuit()+".png";
 			imgList.add(new Image(cardImgSrc,140,190,true,true));
 		}
@@ -88,10 +88,10 @@ public class Graphics implements Initializable{
 	public void passAction(ActionEvent event)throws Exception{
 		if(!game.gameOverCheck()){
 			game.passTurn();
-			m.changeScene("View.fxml");
+			m.changeScene("../gui/View.fxml");
 			game.currentPlayer.takeCard(displayCardSelectionPrompt());
 			game.currentPlayer.hand.discardPairs();
-			m.changeScene("View.fxml");
+			m.changeScene("../gui/View.fxml");
 		}else{
 			displaySelectionAlert("Game Over", "You are the loser!");
 			storeStage.close();
@@ -111,15 +111,21 @@ public class Graphics implements Initializable{
 			cardSelectionPromptWindow.setMinWidth(250);
 
 
-			javafx.scene.control.Label msgLabel=new javafx.scene.control.Label();
+			Label msgLabel=new Label();
 			msgLabel.setText(prompt);
 			msgLabel.setPadding(new Insets(15,15,15,15));
-			msgLabel.setFont(Font.font("Courier New", FontWeight.BOLD,20));
+//			msgLabel.setFont(Font.font("Courier New", FontWeight.BOLD,20));
+			msgLabel.setId("titleLabel");
 
-			javafx.scene.control.TextField inputBox= new javafx.scene.control.TextField();
+			TextField inputBox= new TextField();
+			inputBox.setId("ipInput");
+			inputBox.setPrefHeight(28);
+			inputBox.setMinHeight(28);
 
-			javafx.scene.control.Button submitInput=new Button();
-			submitInput.setText("Submit");
+			Button submitInput=new Button();
+			submitInput.setText("Take");
+			submitInput.setId("joinButton");
+
 
 			submitInput.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -148,8 +154,11 @@ public class Graphics implements Initializable{
 			VBox layout=new VBox(10);
 			layout.getChildren().addAll(msgLabel,hBoxInput);
 			layout.setAlignment(Pos.CENTER);
+			layout.setSpacing(20);
+			layout.setId("vBoxMenu");
 
-			Scene scene= new Scene(layout);
+			Scene scene= new Scene(layout,325, 155);
+			scene.getStylesheets().add("/css/stylesheet.css");
 
 			cardSelectionPromptWindow.setScene(scene);
 			cardSelectionPromptWindow.showAndWait();

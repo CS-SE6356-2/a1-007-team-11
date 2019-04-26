@@ -6,17 +6,14 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="anchor" fx:id="n" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="449.0" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HostLobbyController">
+<AnchorPane id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="237.0" prefWidth="381.0" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HostLobbyController">
    <children>
-      <TableView id="playerTable" layoutX="101.0" layoutY="66.0" prefHeight="172.0" prefWidth="322.0" stylesheets="@../css/stylesheet.css">
+      <TableView id="playerTable" fx:id="tableView" layoutX="133.0" layoutY="53.0" prefHeight="156.0" prefWidth="202.0" stylesheets="@../css/stylesheet.css">
          <columns>
-            <TableColumn prefWidth="95.20001220703125" text="Player Name" />
-            <TableColumn prefWidth="102.40000915527344" text="Roll" />
-            <TableColumn prefWidth="73.5999755859375" text="Ready" />
-         </columns>
-      </TableView>
-      <Label id="lobbyTitle" layoutX="188.0" layoutY="18.0" stylesheets="@../css/stylesheet.css" text="Old Maid: Game Lobby" />
-      <Button id="startButton" fx:id="startGameButton" layoutX="16.0" layoutY="177.0" mnemonicParsing="false" onAction="#startGame" prefHeight="61.0" prefWidth="75.0" stylesheets="@../css/stylesheet.css" text="Start Game" />
-      <Button id="backButton" fx:id="hostBackButton" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToServerMenu" stylesheets="@../css/stylesheet.css" text="Back" />
+            <TableColumn fx:id="pNameCol" prefWidth="210.40003204345703" text="Player Name" />
+         </columns></TableView>
+      <Label id="lobbyTitle" layoutX="124.0" layoutY="14.0" prefHeight="30.0" prefWidth="242.0" stylesheets="@../css/stylesheet.css" text="Old Maid: Game Lobby" />
+      <Button id="startButton" fx:id="startGameButton" layoutX="23.0" layoutY="145.0" mnemonicParsing="false" onAction="#startGame" prefHeight="64.0" prefWidth="94.0" stylesheets="@../css/stylesheet.css" text="Start Game" />
+      <Button id="backButton" fx:id="hostBackButton" layoutX="23.0" layoutY="17.0" mnemonicParsing="false" onAction="#backToServerMenu" prefHeight="38.0" prefWidth="64.0" stylesheets="@../css/stylesheet.css" text="Back" />
    </children>
 </AnchorPane>

@@ -8,15 +8,13 @@
 
 <AnchorPane id="anchor" fx:id="anchorJoin" prefHeight="260.0" prefWidth="449.0" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.JoinLobbyController">
    <children>
-      <Button id="backButton" fx:id="joinBackButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToServerMenu" stylesheets="@../css/stylesheet.css" text="Back" />
+      <Button id="backButton" fx:id="joinBackButton" layoutX="23.0" layoutY="22.0" mnemonicParsing="false" onAction="#backToServerMenu" stylesheets="@../css/stylesheet.css" text="Back" />
       <TableView id="playerTable" layoutX="101.0" layoutY="66.0" prefHeight="172.0" prefWidth="322.0" stylesheets="@../css/stylesheet.css">
         <columns>
-          <TableColumn prefWidth="95.20001220703125" text="Player Name" />
-            <TableColumn prefWidth="102.40000915527344" text="Roll" />
-          <TableColumn prefWidth="73.5999755859375" text="Ready" />
+          <TableColumn prefWidth="160.0" text="Player Name" />
+          <TableColumn prefWidth="162.4000244140625" text="Role" />
         </columns>
       </TableView>
-      <Button id="rdyButton" fx:id="rdyButton" layoutX="14.0" layoutY="184.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="68.0" stylesheets="@../css/stylesheet.css" text="Ready" />
-      <Label id="lobbyTitle" layoutX="188.0" layoutY="18.0" stylesheets="@../css/stylesheet.css" text="Old Maid: Game Lobby" />
+      <Label id="lobbyTitle" layoutX="164.0" layoutY="29.0" stylesheets="@../css/stylesheet.css" text="Old Maid: Game Lobby" />
    </children>
 </AnchorPane>

@@ -46,35 +46,5 @@ public class ServerMenuController implements Initializable {
         return ipInput.getText();
     }
 
-    public void nameRequest(){
-        final String[] name = {""};
-        Stage nameRequestPrompt= new Stage();
-        nameRequestPrompt.initModality(Modality.APPLICATION_MODAL);
-        nameRequestPrompt.setTitle("Input Name");
-        nameRequestPrompt.setMinWidth(250);
-
-        Label msgLabel= new Label("Input Name");
-
-        final TextField[] inputBox = {new TextField("Player Name")};
-
-        Button submitButton=new Button("Submit");
-
-        submitButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if(inputBox[0].getText()==null){
-                    displaySelectionAlert("Input Needed", "Enter your name");
-                }else name[0] = inputBox[0].getText();
-            }
-        });
-
-        VBox vBox=new VBox();
-
-        HBox hBox=new HBox();
-
-        hBox.getChildren().addAll(inputBox[0],submitButton);
-        vBox.getChildren().addAll(msgLabel,hBox);
-
-    }
 }
 

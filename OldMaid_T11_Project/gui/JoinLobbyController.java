@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import src.Main;
 
 import java.net.URL;
@@ -14,6 +15,8 @@ public class JoinLobbyController implements Initializable {
 
     @FXML
     public Button joinBackButton;
+    @FXML
+    TableColumn nameCol;
     Main m= new Main();
 
     @Override

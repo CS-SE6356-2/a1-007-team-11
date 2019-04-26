@@ -1,10 +1,13 @@
 package src;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import static src.Main.game;
 
 public class Player {
 	public Hand hand;
 	public String name;
+	public SimpleStringProperty playerName;
 
 	public void chooseCard(Player targetPlayer) {
 		// This function requires the graphics class
@@ -24,6 +27,7 @@ public class Player {
 	public Player(Hand newHand, String name) {
 		hand = newHand;
 		this.name=name;
+		this.playerName=new SimpleStringProperty(name);
 	}
 
 	public void setName(String n){
@@ -33,4 +37,13 @@ public class Player {
 	public String getName(){
 		return this.name;
 	}
+
+	public void setPlayerName(SimpleStringProperty pName){
+		this.playerName=pName;
+	}
+
+	public SimpleStringProperty getPlayerName(){
+		return this.playerName;
+	}
+
 }
