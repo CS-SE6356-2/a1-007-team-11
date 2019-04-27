@@ -14,7 +14,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import game.Card;
 import game.Main;
-import server.*;
+import server.KryoClient;
+import server.KryoServer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,19 +36,25 @@ public class ServerMenuController implements Initializable {
 
     @FXML
     protected void joinAction(ActionEvent event)throws Exception{
+        //TODO: pls check if they actually put in an ip
+
+        System.out.println("Input: " + ipInput.getText());
+        KryoClient join_game = new KryoClient();
+        try{
+            //5 second timeout window
+            //127.0.0.1 = local host ip (same machine)
+            join_game.client.connect(5000, ipInput.getText(), 54555, 54777);
+        }catch (IOException e){
+            //TODO: add in a message telling them that they couldn't connect to server
+        }
         m.changeScene("../gui/JoinLobby.fxml");
     }
 
     @FXML
     protected void hostAction(ActionEvent event)throws Exception{
-        //server start
-        /*
-        KryoServer hosted_game = new KryoServer();
-        try{
-
-        }catch(IOException e){}*/
+        //start server
+        KryoServer host_game = new KryoServer();
         m.changeScene("../gui/Menu.fxml");
-
     }
 
     public String getIP(){

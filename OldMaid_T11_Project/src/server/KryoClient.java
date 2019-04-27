@@ -13,7 +13,7 @@ import java.io.IOException;
 public class KryoClient{
     public Client client = new Client();
 
-    KryoClient(){
+    public KryoClient(){
         client.start();
         //register packets
         client.getKryo().register(Packet.class);

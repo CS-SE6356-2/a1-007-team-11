@@ -67,7 +67,7 @@ public class Graphics implements Initializable{
 	private void drawPlayerHand(Player p){
 		for (int j=0; j<p.hand.myHand.size();j++){
 			Card currentCard=p.hand.myHand.get(j);
-			String cardImgSrc="file:OldMaid_T11_Project/img/"+currentCard.getValue()+currentCard.getSuit()+".png";
+			String cardImgSrc="file:img/"+currentCard.getValue()+currentCard.getSuit()+".png";
 			imgList.add(new Image(cardImgSrc,140,190,true,true));
 		}
 	}

@@ -1,4 +1,6 @@
 package game;
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,6 +18,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import packets.Packet;
+import server.KryoServer;
 
 
 public class Main extends Application {
@@ -37,8 +41,10 @@ public class Main extends Application {
 //		For eclipse
 //		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Menu.fxml"));
 //		For Intellj
+		//server start
+
 		storeStage=primaryStage;
-		Parent root = FXMLLoader.load(getClass().getResource("../gui/ServerMenu.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui/ServerMenu.fxml"));
 		storeStage.setTitle("Old Maid");
 		menu = new Scene(root);
 
