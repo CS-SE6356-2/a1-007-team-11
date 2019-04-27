@@ -62,4 +62,16 @@ public class Game
 		}
 	}
 
+	public String[] toPlayerNamesArr(){
+		String[] namesArr= new String[playerList.size()];
+		for (int i=0;i<playerList.size();i++) {
+			namesArr[i]= playerList.get(i).getName();
+			if(playerList.get(i).getName()==""){
+				i=playerList.size();
+				break;
+			}
+		}
+		return namesArr;
+	}
+
 }

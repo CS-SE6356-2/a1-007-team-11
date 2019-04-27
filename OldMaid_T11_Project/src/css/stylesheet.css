@@ -172,7 +172,6 @@ Styles for ServerMenu
         radial-gradient(center 50% 50%, radius 100%, #CDA34F, #E9E7DA);
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
     -fx-font-family: "Britannic Bold";
-    -fx-font-weight: bold;
     -fx-font-size: 1.1em;
     -fx-text-fill:#000000;
 }
@@ -376,23 +375,26 @@ Styles for HostLobby
 }
 
 .table-view .table-cell{
-    -fx-text-fill: white;
+    -fx-text-fill: #373F27;
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 1.1em;
 }
 
 .table-row-cell{
-    -fx-background-color: -fx-table-cell-border-color, #616161;
+	/* #616161*/
+    -fx-background-color: -fx-table-cell-border-color, #E9E7DA;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em; /* 0 */
 }
 
 .table-row-cell:odd{
-    -fx-background-color: -fx-table-cell-border-color, #424242;
+    -fx-background-color: -fx-table-cell-border-color, #CDA34F;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em; /* 0 */  
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #005797;
+    -fx-background-color: #636B46;
     -fx-background-insets: 0;
     -fx-background-radius: 1;
 }

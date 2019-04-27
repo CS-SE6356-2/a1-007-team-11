@@ -28,19 +28,15 @@ public class HostLobbyController implements Initializable {
     @FXML
     Button hostBackButton;
     @FXML
-    TableColumn pNameCol;
+    TableColumn<String,String> pNameCol;
     @FXML
-    TableView<SimpleStringProperty> tableView;
+    TableView<String> tableView;
 
-    static ObservableList<SimpleStringProperty> data=FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        pNameCol.setCellValueFactory(new PropertyValueFactory<SimpleStringProperty,String>("playerName"));
-//        pNameCol.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()));
-//        game.playerList.get(0).getName())
-        data.add(game.playerList.get(0).getPlayerName());
-        tableView.setItems(data);
+        pNameCol.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue()));
+        tableView.setItems(FXCollections.observableArrayList(game.toPlayerNamesArr()));
     }
 
 

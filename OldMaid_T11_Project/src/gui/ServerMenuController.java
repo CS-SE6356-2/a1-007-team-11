@@ -37,17 +37,20 @@ public class ServerMenuController implements Initializable {
     @FXML
     protected void joinAction(ActionEvent event)throws Exception{
         //TODO: pls check if they actually put in an ip
-
-        System.out.println("Input: " + ipInput.getText());
-        KryoClient join_game = new KryoClient();
-        try{
-            //5 second timeout window
-            //127.0.0.1 = local host ip (same machine)
-            join_game.client.connect(5000, ipInput.getText(), 54555, 54777);
-        }catch (IOException e){
-            //TODO: add in a message telling them that they couldn't connect to server
+        if(validIP(ipInput.getText())){
+            KryoClient join_game = new KryoClient();
+            try{
+                //5 second timeout window
+                //127.0.0.1 = local host ip (same machine)
+                join_game.client.connect(5000, ipInput.getText(), 54555, 54777);
+            }catch (IOException e){
+                //TODO: add in a message telling them that they couldn't connect to server
+                displaySelectionAlert("Cannot Connect to Server", "\tFailure to connect to server.\n Please check the address again, and retry!");
+            }
+            m.changeScene("../gui/JoinLobby.fxml");
+        }else{
+            displaySelectionAlert("Invalid IP Format","Please enter a valid IP format");
         }
-        m.changeScene("../gui/JoinLobby.fxml");
     }
 
     @FXML
@@ -59,6 +62,33 @@ public class ServerMenuController implements Initializable {
 
     public String getIP(){
         return ipInput.getText();
+    }
+
+    public static boolean validIP (String ip) {
+        try {
+            if ( ip == null || ip.isEmpty() ) {
+                return false;
+            }
+
+            String[] parts = ip.split( "\\." );
+            if ( parts.length != 4 ) {
+                return false;
+            }
+
+            for ( String s : parts ) {
+                int i = Integer.parseInt( s );
+                if ( (i < 0) || (i > 255) ) {
+                    return false;
+                }
+            }
+            if ( ip.endsWith(".") ) {
+                return false;
+            }
+
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
     }
 
 }
