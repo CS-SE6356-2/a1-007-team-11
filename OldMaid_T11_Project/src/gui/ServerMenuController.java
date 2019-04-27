@@ -18,7 +18,9 @@ import server.KryoClient;
 import server.KryoServer;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -36,7 +38,13 @@ public class ServerMenuController implements Initializable {
 
     @FXML
     protected void joinAction(ActionEvent event)throws Exception{
-        //TODO: pls check if they actually put in an ip
+        /*
+        KryoClient join_game = new KryoClient();
+        List<InetAddress> available_ips = join_game.client.discoverHosts(54777, 10000);
+        for(InetAddress temp : available_ips){
+            System.out.println(temp.toString());
+        }*/
+
         if(validIP(ipInput.getText())){
             KryoClient join_game = new KryoClient();
             try{

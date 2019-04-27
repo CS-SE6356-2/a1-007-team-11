@@ -137,7 +137,6 @@ public class Main extends Application {
 	}
 
 	public static String nameRequest(){
-
 		final String[] name = {""};
 		Stage nameRequestPrompt= new Stage();
 		nameRequestPrompt.initModality(Modality.APPLICATION_MODAL);
