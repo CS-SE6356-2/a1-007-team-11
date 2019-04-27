@@ -28,7 +28,7 @@ public class JoinLobbyController implements Initializable {
 
     @FXML
     public void backToServerMenu(ActionEvent event)throws Exception{
-        m.changeScene("../gui/ServerMenu.fxml");
+        m.changeScene("../src.gui/ServerMenu.fxml");
     }
 }
 

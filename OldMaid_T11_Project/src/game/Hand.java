@@ -24,7 +24,6 @@ public class Hand {
 					this.myHand.remove(j-1);
 					game.discardPile.add(firstCard);
 					game.discardPile.add(secondCard);
-					System.out.println("Discarding pair of "+firstCard.getValue()+" "+secondCard.getValue());
 					pairFound=true;
 				}
 			}

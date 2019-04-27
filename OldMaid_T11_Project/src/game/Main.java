@@ -35,10 +35,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 //		For eclipse
-//		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Menu.fxml"));
+//		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("../gui/ServerMenu.fxml"));
 //		For Intellj
 		storeStage=primaryStage;
-		Parent root = FXMLLoader.load(getClass().getResource("../gui/ServerMenu.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui/ServerMenu.fxml"));
 		storeStage.setTitle("Old Maid");
 		menu = new Scene(root);
 
@@ -176,6 +176,7 @@ public class Main extends Application {
 
 		Scene scene=new Scene(vBox,325, 155);
 		scene.getStylesheets().add("/css/stylesheet.css");
+
 		nameRequestPrompt.setScene(scene);
 		nameRequestPrompt.showAndWait();
 
