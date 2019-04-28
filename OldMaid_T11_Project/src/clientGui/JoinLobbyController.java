@@ -28,8 +28,8 @@ public class JoinLobbyController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        pNameCol.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue()));
-        tableView.setItems(FXCollections.observableArrayList(game.toPlayerNamesArr()));
+        //pNameCol.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue()));
+        //tableView.setItems(FXCollections.observableArrayList(game.toPlayerNamesArr()));
     }
 
 

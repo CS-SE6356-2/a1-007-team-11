@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import packets.LobbyPacket;
 import server.KryoClient;
 import server.KryoServer;
 
@@ -30,17 +31,23 @@ public class ServerMenuController implements Initializable {
 
     @FXML
     protected void joinAction(ActionEvent event)throws Exception{
+        String user_name = "err";
         if(validIP(ipInput.getText())){
             KryoClient join_game = new KryoClient();
             try{
                 //10 second timeout window
                 //127.0.0.1 = local host ip (same machine)
                 join_game.client.connect(10000, ipInput.getText(), 54555, 54777);
-                game.playerList.get(storedNum).setName(nameRequest());
+                user_name = nameRequest();
+                game.playerList.get(storedNum).setName(user_name);
                 storedNum++;
-                m.changeScene("../gui/JoinLobby.fxml");
+
+                LobbyPacket p1 = new LobbyPacket();
+                p1.clientName = user_name;
+                join_game.client.sendTCP(p1);
+
+                m.changeScene("../clientGui/JoinLobby.fxml");
             }catch (IOException e){
-                //TODO: add in a message telling them that they couldn't connect to server
                 displaySelectionAlert("Cannot Connect to Server", "\tFailure to connect to server.\n Please check the address again, and retry!");
             }
         }else{

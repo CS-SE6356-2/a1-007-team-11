@@ -14,6 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import game.Card;
 import game.Main;
+import packets.LobbyPacket;
 import server.KryoClient;
 import server.KryoServer;
 
@@ -38,24 +39,27 @@ public class ServerMenuController implements Initializable {
 
     @FXML
     protected void joinAction(ActionEvent event)throws Exception{
-        /*
-        KryoClient join_game = new KryoClient();
-        List<InetAddress> available_ips = join_game.client.discoverHosts(54777, 10000);
-        for(InetAddress temp : available_ips){
-            System.out.println(temp.toString());
-        }*/
-
+        String user_name = "err";
         if(validIP(ipInput.getText())){
             KryoClient join_game = new KryoClient();
             try{
                 //10 second timeout window
                 //127.0.0.1 = local host ip (same machine)
                 join_game.client.connect(10000, ipInput.getText(), 54555, 54777);
+                user_name = nameRequest();
+                System.out.println(user_name);
+                //System.out.println(m.game.playerList.size());
+                //m.game.playerList.get(storedNum).setName(user_name);
+                //storedNum++;
+
+                LobbyPacket p1 = new LobbyPacket();
+                p1.clientName = user_name;
+                join_game.client.sendTCP(p1);
+
+                //m.changeScene("../clientGui/JoinLobby.fxml");
             }catch (IOException e){
-                //TODO: add in a message telling them that they couldn't connect to server
                 displaySelectionAlert("Cannot Connect to Server", "\tFailure to connect to server.\n Please check the address again, and retry!");
             }
-            m.changeScene("../gui/JoinLobby.fxml");
         }else{
             displaySelectionAlert("Invalid IP Format","Please enter a valid IP format");
         }
