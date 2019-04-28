@@ -1,4 +1,5 @@
 package game;
+import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import javafx.application.Application;
@@ -19,6 +20,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import packets.Packet;
+import server.KryoClient;
 import server.KryoServer;
 
 
@@ -28,6 +30,8 @@ public class Main extends Application {
 	public static ActionEvent event;
 	public static Stage storeStage;
 	public static Scene menu,view;
+	public KryoServer host_game;
+	public KryoClient join_game;
 
 //	protected static Parent root;
 

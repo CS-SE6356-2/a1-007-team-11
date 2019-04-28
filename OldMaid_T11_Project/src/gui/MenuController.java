@@ -1,5 +1,7 @@
 package gui;
 
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +21,11 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import game.Main;
+import packets.LobbyPacket;
+import packets.Packet;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -48,6 +53,21 @@ public class MenuController implements Initializable {
             Main.setup(2);
             game.playerList.get(0).setName(nameRequest());
             m.changeScene("../gui/HostLobby.fxml");
+
+            m.host_game.server.addListener(new Listener(){
+                public void received (Connection connection, Object object) {
+                    //check if packet is registered packet
+                    if (object instanceof Packet) {
+                        LobbyPacket p1 = (LobbyPacket) object;
+                        System.out.println(p1.clientName);
+                        try {
+                            m.changeScene("../gui/HostLobby.fxml");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
 
         }else if(threePlayer.isSelected()){
             Main.setup(3);

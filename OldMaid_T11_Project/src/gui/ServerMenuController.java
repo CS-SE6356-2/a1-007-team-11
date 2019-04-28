@@ -46,11 +46,11 @@ public class ServerMenuController implements Initializable {
         }*/
 
         if(validIP(ipInput.getText())){
-            KryoClient join_game = new KryoClient();
+            m.join_game = new KryoClient();
             try{
                 //10 second timeout window
                 //127.0.0.1 = local host ip (same machine)
-                join_game.client.connect(10000, ipInput.getText(), 54555, 54777);
+                m.join_game.client.connect(10000, ipInput.getText(), 54555, 54777);
             }catch (IOException e){
                 //TODO: add in a message telling them that they couldn't connect to server
                 displaySelectionAlert("Cannot Connect to Server", "\tFailure to connect to server.\n Please check the address again, and retry!");
@@ -64,7 +64,7 @@ public class ServerMenuController implements Initializable {
     @FXML
     protected void hostAction(ActionEvent event)throws Exception{
         //start server
-        KryoServer host_game = new KryoServer();
+        m.host_game = new KryoServer();
         m.changeScene("../gui/Menu.fxml");
     }
 
