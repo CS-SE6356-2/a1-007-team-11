@@ -1,33 +1,19 @@
-package gui;
+package clientGui;
 
+import game.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableView;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.stage.Modality;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import game.Main;
-
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static game.Main.displaySelectionAlert;
-import static game.Main.nameRequest;
-
-import static game.Main.game;
+import static game.Main.*;
 
 
 public class MenuController implements Initializable {
@@ -48,12 +34,13 @@ public class MenuController implements Initializable {
             Main.setup(2);
             game.playerList.get(0).setName(nameRequest());
             m.changeScene("../gui/HostLobby.fxml");
-
         }else if(threePlayer.isSelected()){
             Main.setup(3);
+            game.playerList.get(0).setName(nameRequest());
             m.changeScene("../gui/HostLobby.fxml");
         }else if(fourPlayer.isSelected()){
             Main.setup(4);
+            game.playerList.get(0).setName(nameRequest());
             m.changeScene("../gui/HostLobby.fxml");
         }else{
             displaySelectionAlert("Warning!", "\tWarning: Selection Needed.\n Please make a selection and try again.");

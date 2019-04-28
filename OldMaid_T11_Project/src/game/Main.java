@@ -30,6 +30,7 @@ public class Main extends Application {
 	public static ActionEvent event;
 	public static Stage storeStage;
 	public static Scene menu,view;
+	public static int storedNum=0;
 	public KryoServer host_game;
 	public KryoClient join_game;
 
