@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import packets.Packet;
 import server.KryoClient;
 import server.KryoServer;
@@ -43,37 +44,23 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-//		For eclipse
-//		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("../gui/ServerMenu.fxml"));
-//		For Intellj
-		//server start
-
 		storeStage=primaryStage;
 		Parent root = FXMLLoader.load(getClass().getResource("/gui/ServerMenu.fxml"));
 		storeStage.setTitle("Old Maid");
 		menu = new Scene(root);
 
+//		storeStage.initStyle(StageStyle.UNDECORATED);
+		storeStage.setResizable(false);
 		storeStage.setScene(menu);
 		storeStage.show();
 
 	}
 
 	public void changeScene(String file) throws Exception{
-//		For eclipse
-//		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Menu.fxml"));
-//		For Intellj
 		Parent root = FXMLLoader.load(getClass().getResource(file));
 		view = new Scene(root);
 		storeStage.setScene(view);
 		storeStage.show();
-	}
-
-	public void play()
-	{
-		while (!game.gameIsOver){
-			//play the game
-		}
-
 	}
 
 	public static void setup(int numPlayers)
@@ -90,22 +77,6 @@ public class Main extends Application {
 		for(int i=0;i<game.playerList.size();i++){
 			game.playerList.get(i).hand.discardPairs();
 		}
-	}
-
-	static protected void replay()
-	{
-		if (game.gameIsOver)
-			game = new Game();
-	}
-
-	public void create()
-	{
-
-	}
-
-	public void join()
-	{
-
 	}
 
 	public static boolean isNumeric(String strNum){
@@ -128,27 +99,28 @@ public class Main extends Application {
 		javafx.scene.control.Label msgLabel=new javafx.scene.control.Label(msg);
 		msgLabel.setText(msg);
 		msgLabel.setPadding(new javafx.geometry.Insets(15,15,15,15));
-		msgLabel.setFont(Font.font("Courier New", FontWeight.BOLD,20));
+		msgLabel.setId("alertLabel");
 
 		VBox layout=new VBox(10);
 		layout.getChildren().add(msgLabel);
 		layout.setAlignment(Pos.CENTER);
-		layout.setBackground(new Background(new BackgroundFill((javafx.scene.paint.Color.TOMATO), CornerRadii.EMPTY, Insets.EMPTY)));
-		layout.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+		layout.setId("alertBox");
 
 		Scene scene=new Scene(layout);
+		selectionAlertWindow.setResizable(false);
+		scene.getStylesheets().add("/css/stylesheet.css");
 		selectionAlertWindow.setScene(scene);
 		selectionAlertWindow.showAndWait();
 	}
 
-	public static String nameRequest(){
+	public static String nameRequest(int i){
 		final String[] name = {""};
 		Stage nameRequestPrompt= new Stage();
 		nameRequestPrompt.initModality(Modality.APPLICATION_MODAL);
 		nameRequestPrompt.setTitle("Input Name");
 		nameRequestPrompt.setMinWidth(250);
 
-		Label msgLabel= new Label("Input Name");
+		Label msgLabel= new Label("Input the name of Player "+i);
 		msgLabel.setId("titleLabel");
 
 		final TextField[] inputBox = {new TextField()};
@@ -163,7 +135,7 @@ public class Main extends Application {
 		submitButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				if(inputBox[0].getText()==null){
+				if(inputBox[0].getText().isEmpty()){
 					displaySelectionAlert("Input Needed", "Enter your name");
 				}else{
 					name[0] = inputBox[0].getText();
@@ -180,14 +152,18 @@ public class Main extends Application {
 
 		VBox vBox=new VBox();
 		vBox.getChildren().addAll(msgLabel,hBox);
-		vBox.setSpacing(20);
+		vBox.setSpacing(10);
 		vBox.setAlignment(Pos.CENTER);
 		vBox.setId("vBoxMenu");
 
 		Scene scene=new Scene(vBox,325, 155);
 		scene.getStylesheets().add("/css/stylesheet.css");
 
+		nameRequestPrompt.setOnCloseRequest(event1 -> {
+			name[0]="";
+		});
 		nameRequestPrompt.setScene(scene);
+		nameRequestPrompt.setResizable(false);
 		nameRequestPrompt.showAndWait();
 
 		return name[0];

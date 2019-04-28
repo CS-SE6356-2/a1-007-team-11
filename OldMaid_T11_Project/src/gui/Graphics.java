@@ -41,7 +41,8 @@ public class Graphics implements Initializable{
 	@FXML public ScrollPane scrollPane;
 	@FXML public BorderPane borderPane;
 	@FXML public GridPane gridPane;
-	@FXML public Label discardCount,currentPlayerLabel;
+	@FXML public Label discardCount,currentPlayerLabel, topPlayerLabel,leftPlayerLabel,rightPlayerLabel;
+	@FXML public ImageView topPlayer,leftPlayer,rightPlayer;
 	@FXML public VBox vBox;
 	public ImageView[] imageView;
 	public List<Image> imgList= new LinkedList<>();
@@ -56,10 +57,11 @@ public class Graphics implements Initializable{
 		discardCount.setText(numDiscarded);
 		currentPlayerLabel.setText(playerTracker);
 		cardPane=new HBox();
-		cardPane.setStyle("-fx-background-color: grey");
 		drawPlayerHand(game.currentPlayer);
 		updateView(cardPane);
-		storeStage.setMaximized(true);
+		drawOpponentsHands();
+		storeStage.setFullScreen(true);
+		storeStage.setResizable(false);
 		scrollPane.setContent(cardPane);
 	}
 
@@ -72,6 +74,75 @@ public class Graphics implements Initializable{
 		}
 	}
 
+	private void drawOpponentsHands(){
+		int cPlayerIndex= game.playerList.indexOf(game.currentPlayer);
+		int startingIndex=((cPlayerIndex+1)==game.playerList.size()? 0:cPlayerIndex+1);
+		String numberOfCardsPath="";
+		//determines size of the game
+		switch (game.playerList.size()-1){
+			case 1://two player
+				for(int i=0;i<1;i++){
+					try{
+						numberOfCardsPath="file:/../img/cardbacks/"+game.playerList.get(startingIndex).hand.myHand.size()+"card.png";
+						topPlayer.setImage(new Image(numberOfCardsPath));
+						topPlayerLabel.setText(game.playerList.get(startingIndex).getName());
+						startingIndex++;
+					}catch (NullPointerException |IndexOutOfBoundsException e){
+						startingIndex=0;
+						numberOfCardsPath="file:/../img/cardbacks/"+game.playerList.get(startingIndex).hand.myHand.size()+"card.png";
+						topPlayer.setImage(new Image(numberOfCardsPath));
+						topPlayerLabel.setText(game.playerList.get(startingIndex).getName());
+						startingIndex++;
+					}
+				}
+				break;
+			case 2://three player
+				for(int i=0;i<2;i++){
+					try{
+						numberOfCardsPath="file:/../img/cardbacks/"+game.playerList.get(startingIndex).hand.myHand.size()+"card.png";
+						handlePlayerLocation(i,numberOfCardsPath,startingIndex);
+						startingIndex++;
+					}catch (NullPointerException |IndexOutOfBoundsException e){
+						startingIndex=0;
+						numberOfCardsPath="file:/../img/cardbacks/"+game.playerList.get(startingIndex).hand.myHand.size()+"card.png";
+						handlePlayerLocation(i,numberOfCardsPath,startingIndex);
+						startingIndex++;
+					}
+				}
+				break;
+			case 3://four player
+				for(int i=0;i<3;i++){
+					try{
+						numberOfCardsPath="file:/../img/cardbacks/"+game.playerList.get(startingIndex).hand.myHand.size()+"card.png";
+						handlePlayerLocation(i,numberOfCardsPath,startingIndex);
+						startingIndex++;
+					}catch (NullPointerException |IndexOutOfBoundsException e){
+						startingIndex=0;
+						numberOfCardsPath="file:/../img/cardbacks/"+game.playerList.get(startingIndex).hand.myHand.size()+"card.png";
+						handlePlayerLocation(i,numberOfCardsPath,startingIndex);
+						startingIndex++;
+					}
+				}
+				break;
+		}
+	}
+
+	private void handlePlayerLocation(int num, String path, int currentIndex){
+		switch (num){
+			case 0:
+				leftPlayer.setImage(new Image(path));
+				leftPlayerLabel.setText(game.playerList.get(currentIndex).getName());
+				break;
+			case 1:
+				topPlayer.setImage(new Image(path));
+				topPlayerLabel.setText(game.playerList.get(currentIndex).getName());
+				break;
+			case 2:
+				rightPlayer.setImage(new Image(path));
+				rightPlayerLabel.setText(game.playerList.get(currentIndex).getName());
+				break;
+		}
+	}
 	private void updateView(HBox cardPane){
 		cardPane.getChildren().clear();
 		imageView=new ImageView[imgList.size()];
@@ -84,16 +155,22 @@ public class Graphics implements Initializable{
 		imgList.clear();
 	}
 
+
 	//pass turn action
 	public void passAction(ActionEvent event)throws Exception{
+		int cardAccepted;
 		if(!game.gameOverCheck()){
 			game.passTurn();
 			m.changeScene("../gui/View.fxml");
-			game.currentPlayer.takeCard(displayCardSelectionPrompt());
+			cardAccepted=displayCardSelectionPrompt();
+			while(cardAccepted==-1){
+				cardAccepted=displayCardSelectionPrompt();
+			}
+			game.currentPlayer.takeCard(cardAccepted);
 			game.currentPlayer.hand.discardPairs();
 			m.changeScene("../gui/View.fxml");
 		}else{
-			displaySelectionAlert("Game Over", "You are the loser!");
+			displaySelectionAlert("Game Over", "Game Over.\nYou are the loser!");
 			storeStage.close();
 		}
 
@@ -104,23 +181,29 @@ public class Graphics implements Initializable{
 		if(game.prevPlayer.hand.myHand.size()==0){
 			return 0;
 		}else{
-			String prompt= "Select Card between 1-"+game.prevPlayer.hand.myHand.size();
+			String prompt= "Choose a card between 1 and "+game.prevPlayer.hand.myHand.size()+"\nto take from "+game.prevPlayer.getName()+"'s hand.";
 			Stage cardSelectionPromptWindow= new Stage();
 			cardSelectionPromptWindow.initModality(Modality.APPLICATION_MODAL);
 			cardSelectionPromptWindow.setTitle("Card Selection");
-			cardSelectionPromptWindow.setMinWidth(250);
+			cardSelectionPromptWindow.setMinWidth(300);
 
 
 			Label msgLabel=new Label();
 			msgLabel.setText(prompt);
-			msgLabel.setPadding(new Insets(15,15,15,15));
-//			msgLabel.setFont(Font.font("Courier New", FontWeight.BOLD,20));
+			msgLabel.setPadding(new Insets(10,10,5,10));
+			msgLabel.setAlignment(Pos.CENTER);
 			msgLabel.setId("titleLabel");
 
 			TextField inputBox= new TextField();
 			inputBox.setId("ipInput");
 			inputBox.setPrefHeight(28);
 			inputBox.setMinHeight(28);
+
+			String path="file:/../img/cardbacks/"+game.prevPlayer.hand.myHand.size()+"card.png";
+			ImageView prevPlayerHand= new ImageView(new Image(path));
+			prevPlayerHand.setFitHeight(100);
+			prevPlayerHand.setFitWidth(350);
+			prevPlayerHand.setPreserveRatio(true);
 
 			Button submitInput=new Button();
 			submitInput.setText("Take");
@@ -150,20 +233,73 @@ public class Graphics implements Initializable{
 			hBoxInput.getChildren().addAll(inputBox,submitInput);
 			hBoxInput.setAlignment(Pos.CENTER);
 			hBoxInput.setSpacing(5);
+			hBoxInput.setPadding(new Insets(15,15,15,15));
 
-			VBox layout=new VBox(10);
-			layout.getChildren().addAll(msgLabel,hBoxInput);
+			VBox layout=new VBox();
+			layout.getChildren().addAll(msgLabel,hBoxInput,prevPlayerHand);
 			layout.setAlignment(Pos.CENTER);
-			layout.setSpacing(20);
+			layout.setSpacing(5);
 			layout.setId("vBoxMenu");
 
-			Scene scene= new Scene(layout,325, 155);
+			Scene scene= new Scene(layout,400, 300);
 			scene.getStylesheets().add("/css/stylesheet.css");
-
+			cardSelectionPromptWindow.setOnCloseRequest(event1 -> {
+				cardLocation[0]=0;
+			});
 			cardSelectionPromptWindow.setScene(scene);
 			cardSelectionPromptWindow.showAndWait();
 		}
 
 		return cardLocation[0]-1;
+	}
+
+	public void drawDiscardPile(){
+		Stage discardPileStage= new Stage();
+		discardPileStage.initModality(Modality.APPLICATION_MODAL);
+		discardPileStage.setTitle("Discard Pile");
+		discardPileStage.setMinWidth(400);
+
+		ScrollPane sc=new ScrollPane();
+		sc.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+		sc.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+
+		VBox v= new VBox();
+		HBox h1= new HBox();
+		HBox h2=new HBox();
+		HBox h3= new HBox();
+		HBox h4=new HBox();
+		HBox h5=new HBox();
+		HBox h6=new HBox();
+
+		int cardPerHBox= game.discardPile.size()/6;
+		for (int j=0; j<game.discardPile.size();){
+			for(int i=0;i<9&&j<game.discardPile.size();j++,i++){
+				Card currentCard=game.discardPile.get(j);
+				String cardImgSrc="file:/../img/"+currentCard.getValue()+currentCard.getSuit()+".png";
+				imgList.add(new Image(cardImgSrc,140,190,true,true));
+			}
+			if(j<=9){
+				updateView(h1);
+			}else if(j<=18){
+				updateView(h2);
+			}else if(j<=27){
+				updateView(h3);
+			}else if(j<=36){
+				updateView(h4);
+			}else if(j<=45){
+				updateView(h5);
+			}else{
+				updateView(h6);
+			}
+		}
+
+		v.getChildren().addAll(h1,h2,h3,h4,h5,h6);
+		v.setId("vBoxDiscard");
+		sc.setContent(vBox);
+		Scene s=new Scene(v);
+		s.getStylesheets().add("/css/stylesheet.css");
+		discardPileStage.setResizable(false);
+		discardPileStage.setScene(s);
+		discardPileStage.show();
 	}
 }

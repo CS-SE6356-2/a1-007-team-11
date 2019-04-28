@@ -44,68 +44,95 @@ public class MenuController implements Initializable {
 
     }
 
-    public void openLobby(ActionEvent event) throws Exception{
-        m.host_game = new KryoServer();
+    public void openLobby(ActionEvent event){
+//        m.host_game = new KryoServer();
         storeStage= (Stage)((Node)event.getSource()).getScene().getWindow();
+        String inputtedName;
         if(twoPlayer.isSelected()){
             Main.setup(2);
-            game.playerList.get(storedNum).setName(nameRequest());
-            storedNum++;
-            m.changeScene("../gui/HostLobby.fxml");
-
-            m.host_game.server.addListener(new Listener() {
-                public void received (Connection connection, Object object) {
-                    //check if packet is registered packet
-                    if(object instanceof Packet){
-                        if(object instanceof LobbyPacket){
-                            LobbyPacket p1 = (LobbyPacket) object;
-                            game.playerList.get(storedNum).setName(p1.clientName);
-                            storedNum++;
-                        }
-                    }
+            for(int i=1;i<3;i++){
+                inputtedName=nameRequest(i);
+                while (inputtedName.equals("")){
+                    inputtedName=nameRequest(i);
                 }
-            });
-            m.changeScene("../gui/HostLobby.fxml");
+                game.playerList.get(i-1).setName(inputtedName);
+            }
+            try {
+                m.changeScene("../gui/HostLobby.fxml");
+            } catch (Exception e) {
+
+            }
+
+//            m.host_game.server.addListener(new Listener() {
+//                public void received (Connection connection, Object object) {
+//                    //check if packet is registered packet
+//                    if(object instanceof Packet){
+//                        if(object instanceof LobbyPacket){
+//                            LobbyPacket p1 = (LobbyPacket) object;
+//                            game.playerList.get(storedNum).setName(p1.clientName);
+//                            storedNum++;
+//                        }
+//                    }
+//                }
+//            });
         }else if(threePlayer.isSelected()){
             Main.setup(3);
-            game.playerList.get(storedNum).setName(nameRequest());
-            storedNum++;
-            m.changeScene("../gui/HostLobby.fxml");
-            for(int i = 1; i < 3; i++){
-                m.host_game.server.addListener(new Listener() {
-                    public void received (Connection connection, Object object) {
-                        //check if packet is registered packet
-                        if(object instanceof Packet){
-                            if(object instanceof LobbyPacket){
-                                LobbyPacket p1 = (LobbyPacket) object;
-                                game.playerList.get(storedNum).setName(p1.clientName);
-                                storedNum++;
-                            }
-                        }
-                    }
-                });
-                m.changeScene("../gui/HostLobby.fxml");
+            for(int i=1;i<4;i++){
+                inputtedName=nameRequest(i);
+                while (inputtedName.equals("")){
+                    inputtedName=nameRequest(i);
+                }
+                game.playerList.get(i-1).setName(inputtedName);
             }
+            try {
+                m.changeScene("../gui/HostLobby.fxml");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+//            for(int i = 1; i < 3; i++){
+//                m.host_game.server.addListener(new Listener() {
+//                    public void received (Connection connection, Object object) {
+//                        //check if packet is registered packet
+//                        if(object instanceof Packet){
+//                            if(object instanceof LobbyPacket){
+//                                LobbyPacket p1 = (LobbyPacket) object;
+//                                game.playerList.get(storedNum).setName(p1.clientName);
+//                                storedNum++;
+//                            }
+//                        }
+//                    }
+//                });
+//                m.changeScene("../gui/HostLobby.fxml");
+//            }
         }else if(fourPlayer.isSelected()){
             Main.setup(4);
-            game.playerList.get(storedNum).setName(nameRequest());
-            storedNum++;
-            m.changeScene("../gui/HostLobby.fxml");
-            for(int i = 1; i < 4; i++){
-                m.host_game.server.addListener(new Listener() {
-                    public void received (Connection connection, Object object) {
-                        //check if packet is registered packet
-                        if(object instanceof Packet){
-                            if(object instanceof LobbyPacket){
-                                LobbyPacket p1 = (LobbyPacket) object;
-                                game.playerList.get(storedNum).setName(p1.clientName);
-                                storedNum++;
-                            }
-                        }
-                    }
-                });
-                m.changeScene("../gui/HostLobby.fxml");
+            for(int i=1;i<5;i++){
+                inputtedName=nameRequest(i);
+                while (inputtedName.equals("")){
+                    inputtedName=nameRequest(i);
+                }
+                game.playerList.get(i-1).setName(inputtedName);
             }
+            try {
+                m.changeScene("../gui/HostLobby.fxml");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+//            for(int i = 1; i < 4; i++){
+//                m.host_game.server.addListener(new Listener() {
+//                    public void received (Connection connection, Object object) {
+//                        //check if packet is registered packet
+//                        if(object instanceof Packet){
+//                            if(object instanceof LobbyPacket){
+//                                LobbyPacket p1 = (LobbyPacket) object;
+//                                game.playerList.get(storedNum).setName(p1.clientName);
+//                                storedNum++;
+//                            }
+//                        }
+//                    }
+//                });
+//                m.changeScene("../gui/HostLobby.fxml");
+//            }
         }else{
             displaySelectionAlert("Warning!", "\tWarning: Selection Needed.\n Please make a selection and try again.");
         }

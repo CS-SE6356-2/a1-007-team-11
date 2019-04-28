@@ -46,15 +46,14 @@ public class ServerMenuController implements Initializable {
                 //10 second timeout window
                 //127.0.0.1 = local host ip (same machine)
                 join_game.client.connect(10000, ipInput.getText(), 54555, 54777);
-                user_name = nameRequest();
-                System.out.println(user_name);
+//                user_name = nameRequest();
                 //System.out.println(m.game.playerList.size());
                 //m.game.playerList.get(storedNum).setName(user_name);
                 //storedNum++;
-
-                LobbyPacket p1 = new LobbyPacket();
-                p1.clientName = user_name;
-                join_game.client.sendTCP(p1);
+//
+//                LobbyPacket p1 = new LobbyPacket();
+//                p1.clientName = user_name;
+//                join_game.client.sendTCP(p1);
 
                 //m.changeScene("../clientGui/JoinLobby.fxml");
             }catch (IOException e){
@@ -68,7 +67,7 @@ public class ServerMenuController implements Initializable {
     @FXML
     protected void hostAction(ActionEvent event)throws Exception{
         //start server
-        KryoServer host_game = new KryoServer();
+//        KryoServer host_game = new KryoServer();
         m.changeScene("../gui/Menu.fxml");
     }
 

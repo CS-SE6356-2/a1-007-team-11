@@ -13,7 +13,7 @@ Styles for View
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
     -fx-background-radius: 8;
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #CDA34F 0%, #846d3f 100%),
         #cd904f,
         #c48b4e,
@@ -21,10 +21,11 @@ Styles for View
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
     -fx-font-family: "Britannic Bold";
     -fx-font-weight: bold;
+    -fx-text-fill:#000000;
     -fx-font-size: 1.1em;
 }
 #passButton:hover {
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #ba9346 0%, #776238 100%),
         #af8734,
         #CDA34F,
@@ -47,7 +48,7 @@ Styles for View
 }
 
 .tool-bar {
-    -fx-base: -dark-black;
+    /* -fx-base: -dark-black; */
     -fx-font-size: 12pt;
     -fx-background-color:#636B46;
     /*-fx-spacing:50;*/
@@ -59,9 +60,6 @@ Styles for View
     -fx-effect: dropshadow(two-pass-box,black,5,.2,0,0);
 }
 
-#scPane{
-    -fx-text-background-color:#E9E7DA;
-}
 
 #textDisplayTBar{
     -fx-font-size: 16pt;
@@ -71,18 +69,54 @@ Styles for View
 }
 
 #viewTitle{
-    -fx-font-size: 30pt;
-    -fx-text-background-color:#E9E7DA;
+    -fx-font-size: 55pt;
+    -fx-text-background-color:#CDA34F;
     -fx-font-family: "Britannic Bold";
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
     /*-fx-effect: dropshadow(two-pass-box,black,5,.2,0,0);*/
 }
 
+#discardLabel{
+  -fx-font-size: 14pt;
+  -fx-text-background-color:#E9E7DA;
+  -fx-font-family: "Britannic Bold";
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
+}
+
+#alertLabel{
+  -fx-font-size: 14pt;
+  -fx-text-background-color:#E9E7DA;
+  -fx-font-family: "Britannic Bold";
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
+}
+
+#alertBox{
+  /* -fx-background-color:
+      linear-gradient(from 0% 93% to 0% 100%, #e43e0c 0%, #c90e24 100%),
+      #4f0b12,
+      #c90e24,
+      radial-gradient(center 50% 50%, radius 100%, #4f0b12, #c90e24); */
+      -fx-background-color:
+          linear-gradient(from 0% 93% to 0% 100%, #e43e0c 0%, #c90e24 100%),
+          #4f0b12,
+          #e43e0c,
+          radial-gradient(center 50% 50%, radius 100%, #4f0b12, #c90e24);
+}
+
 #currentPlayerLabel{
     -fx-font-size: 16pt;
     -fx-text-background-color:#E9E7DA;
+    -fx-underline:true;
     -fx-font-family: "Britannic Bold";
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
+}
+
+#playerName{
+  -fx-font-size: 18pt;
+  -fx-text-background-color:#E9E7DA;
+  -fx-underline:true;
+  -fx-font-family: "Britannic Bold";
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
 }
 
 /*
@@ -92,7 +126,7 @@ Styles for Menu
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 6 0;
     -fx-background-radius: 8;
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #CDA34F 0%, #846d3f 100%),
         #cd904f,
         #c48b4e,
@@ -104,7 +138,7 @@ Styles for Menu
 }
 
 #openLobbyButton:hover {
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #ba9346 0%, #776238 100%),
         #af8734,
         #CDA34F,
@@ -121,6 +155,13 @@ Styles for Menu
 
 #vBoxMenu{
     -fx-background-color:#373F27;
+    -fx-border-color:#E9E7DA;
+    -fx-border-width:10;
+}
+
+
+#vBoxDiscard{
+    -fx-background-color:#636B46;
     -fx-border-color:#E9E7DA;
     -fx-border-width:10;
 }
@@ -155,7 +196,7 @@ Styles for Menu
     -fx-padding: 4px;
     -fx-mark-highlight-color:#E9E7DA;
     -fx-mark-color:#E9E7DA;
-} 
+}
 
 
 /*
@@ -165,7 +206,7 @@ Styles for ServerMenu
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 6 0;
     -fx-background-radius: 8;
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #CDA34F 0%, #846d3f 100%),
         #cd904f,
         #c48b4e,
@@ -177,7 +218,7 @@ Styles for ServerMenu
 }
 
 #hstButton:hover {
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #ba9346 0%, #776238 100%),
         #af8734,
         #CDA34F,
@@ -193,9 +234,8 @@ Styles for ServerMenu
 }
 
 #titleLabel{
-    -fx-font-size: 18pt;
+    -fx-font-size: 16pt;
     -fx-text-background-color:#E9E7DA;
-    -fx-underline:true;
     -fx-font-family: "Britannic Bold";
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
     /*-fx-padding-bottom:10;*/
@@ -203,7 +243,7 @@ Styles for ServerMenu
 
 #ipInput{
 /*    -fx-background-color: -fx-text-box-border, -fx-background ;
-*/    
+*/
     -fx-background-color: #E9E7DA, #636B46 ;
     -fx-background-insets: 0, 0 0 1 0 ;
     -fx-background-radius: 0 ;
@@ -224,19 +264,20 @@ Styles for ServerMenu
     -fx-padding: 6 13 13 13;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 6 0;
     -fx-background-radius: 8;
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #CDA34F 0%, #846d3f 100%),
         #cd904f,
         #c48b4e,
         radial-gradient(center 50% 50%, radius 100%, #CDA34F, #E9E7DA);
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.0) , 4,0,0,1 );
     -fx-font-family: "Britannic Bold";
+    -fx-text-fill:#000000;
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
 }
 
 #joinButton:hover {
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #ba9346 0%, #776238 100%),
         #af8734,
         #CDA34F,
@@ -267,7 +308,7 @@ Styles for JoinLobby and HostLobby
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 6 0;
     -fx-background-radius: 8;
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #CDA34F 0%, #846d3f 100%),
         #cd904f,
         #c48b4e,
@@ -279,7 +320,7 @@ Styles for JoinLobby and HostLobby
 }
 
 #backButton:hover {
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #ba9346 0%, #776238 100%),
         #af8734,
         #CDA34F,
@@ -297,9 +338,6 @@ Styles for JoinLobby and HostLobby
 
 
 /*for tables in both join and host*/
-#playerTable{
-
-}
 
 /*for anchor container in host and join*/
 #anchor{
@@ -325,7 +363,7 @@ Styles for HostLobby
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 6 0;
     -fx-background-radius: 8;
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #CDA34F 0%, #846d3f 100%),
         #cd904f,
         #c48b4e,
@@ -337,7 +375,7 @@ Styles for HostLobby
 }
 
 #startButton:hover {
-    -fx-background-color: 
+    -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #ba9346 0%, #776238 100%),
         #af8734,
         #CDA34F,
@@ -390,7 +428,7 @@ Styles for HostLobby
 .table-row-cell:odd{
     -fx-background-color: -fx-table-cell-border-color, #CDA34F;
     -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0.0em; /* 0 */  
+    -fx-padding: 0.0em; /* 0 */
 }
 
 .table-row-cell:selected {
@@ -401,7 +439,7 @@ Styles for HostLobby
 
 /*.table-view > .virtual-flow > .scroll-bar:vertical,
 .table-view > .virtual-flow > .scroll-bar:vertical > .track,
-.table-view > .virtual-flow > .scroll-bar:vertical > .track-background, 
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
 .table-view > .virtual-flow > .scroll-bar:horizontal,
 .table-view > .virtual-flow > .scroll-bar:horizontal > .track,
 .table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
@@ -410,7 +448,7 @@ Styles for HostLobby
 
 
 
-.table-view > .virtual-flow > .scroll-bar > .increment-button, 
+.table-view > .virtual-flow > .scroll-bar > .increment-button,
 .table-view > .virtual-flow > .scroll-bar > .decrement-button {
     -fx-opacity: 0;
 }*/
@@ -419,5 +457,3 @@ Styles for HostLobby
     0% { background-position: 0 0; }
     50% { background-position: 0 -100px; }
 }
-
-

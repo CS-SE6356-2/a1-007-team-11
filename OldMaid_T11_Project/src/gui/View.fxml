@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="gridPane" fx:id="borderPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="981.0" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Graphics">
+<BorderPane id="gridPane" fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1491.0" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Graphics">
    <bottom>
       <VBox fx:id="vBox" spacing="5.0" stylesheets="@../css/stylesheet.css" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane id="scPane" fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/stylesheet.css" />
+            <ScrollPane id="scPane" fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/stylesheet.css" vbarPolicy="NEVER" VBox.vgrow="NEVER" />
             <ToolBar id="tBar" stylesheets="@../css/stylesheet.css">
               <items>
                   <Button fx:id="passButton" alignment="CENTER" mnemonicParsing="false" onAction="#passAction" stylesheets="@../css/stylesheet.css" text="Pass">
@@ -53,14 +53,16 @@
       </VBox>
    </bottom>
    <center>
-      <GridPane id="vBoxSC" fx:id="gridPane" stylesheets="@../css/stylesheet.css" BorderPane.alignment="CENTER">
+      <GridPane id="vBoxSC" fx:id="gridPane" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="410.0" prefWidth="1059.0" stylesheets="@../css/stylesheet.css" BorderPane.alignment="TOP_CENTER">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="527.0" minWidth="10.0" prefWidth="516.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="596.0" minWidth="10.0" prefWidth="450.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="538.0" minWidth="10.0" prefWidth="467.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
@@ -69,20 +71,7 @@
                <font>
                   <Font name="Courier New Bold Italic" size="32.0" />
                </font></Label>
-            <ImageView fitHeight="201.0" fitWidth="125.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" rotate="-90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-               <image>
-                  <Image url="@../../img/gray_back.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" contentDisplay="TEXT_ONLY" text="Discard Pile" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-               <font>
-                  <Font name="Courier New Italic" size="12.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </Label>
-            <Label id="currentPlayerLabel" fx:id="currentPlayerLabel" prefHeight="23.0" prefWidth="354.0" stylesheets="@../css/stylesheet.css" text="Current Player: 1/4" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+            <Label id="currentPlayerLabel" fx:id="currentPlayerLabel" alignment="BOTTOM_LEFT" prefHeight="23.0" prefWidth="354.0" stylesheets="@../css/stylesheet.css" text="Current Player: 1/4" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="BASELINE">
                <font>
                   <Font name="Courier New Bold Italic" size="18.0" />
                </font>
@@ -90,6 +79,49 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
+            <Label id="playerName" fx:id="rightPlayerLabel" alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="238.0" stylesheets="@../css/stylesheet.css" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="60.0" />
+               </GridPane.margin></Label>
+            <ImageView fx:id="leftPlayer" fitHeight="103.0" fitWidth="394.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Label id="playerName" fx:id="leftPlayerLabel" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" prefHeight="29.0" prefWidth="298.0" stylesheets="@../css/stylesheet.css" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="-50.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets right="10.0" />
+               </padding></Label>
+            <ImageView fx:id="rightPlayer" fitHeight="112.0" fitWidth="358.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="2" />
+            <ImageView fx:id="topPlayer" fitHeight="103.0" fitWidth="423.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+            <Label id="playerName" fx:id="topPlayerLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="267.0" stylesheets="@../css/stylesheet.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <VBox alignment="CENTER" fillWidth="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="146.0" prefWidth="294.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <children>
+                  <Label id="discardLabel" fx:id="discardLabel" alignment="BOTTOM_LEFT" contentDisplay="TEXT_ONLY" nodeOrientation="LEFT_TO_RIGHT" stylesheets="@../css/stylesheet.css" text="Discard Pile" textFill="#e9e7da" VBox.vgrow="NEVER">
+                     <font>
+                        <Font name="Courier New Bold Italic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="-20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ImageView fitHeight="141.0" fitWidth="84.0" nodeOrientation="INHERIT" onMouseClicked="#drawDiscardPile" pickOnBounds="true" preserveRatio="true" rotate="90.0" VBox.vgrow="NEVER">
+                     <image>
+                        <Image url="@../../img/gray_back.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" text="[Click Card to View]" textFill="#cda34f" VBox.vgrow="NEVER">
+                     <font>
+                        <Font name="Britannic Bold" size="10.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-22.0" />
+                     </VBox.margin>
+                  </Label>
+               </children></VBox>
          </children>
       </GridPane>
    </center>
