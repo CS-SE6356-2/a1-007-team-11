@@ -36,7 +36,7 @@ public class Game
 	}
 	public boolean gameOverCheck()
 	{
-	    if(discardPile.size()==52&& currentPlayer.hand.myHand.size()==1){
+	    if(discardPile.size()==52){
             return true;
         }
 		return false;

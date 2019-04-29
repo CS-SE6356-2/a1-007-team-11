@@ -170,7 +170,14 @@ public class Graphics implements Initializable{
 			game.currentPlayer.hand.discardPairs();
 			m.changeScene("../gui/View.fxml");
 		}else{
-			displaySelectionAlert("Game Over", "Game Over.\nYou are the loser!");
+			String losing_player = "";
+			for(Player temp : game.playerList){
+				if(temp.hand.handSize == 1){
+					losing_player = temp.getName();
+					break;
+				}
+			}
+			displaySelectionAlert("Game Over", "Game Over.\n" + losing_player + " is the loser!");
 			storeStage.close();
 		}
 
