@@ -1,9 +1,14 @@
 # a1-007-team-11
 a1-007-team-11 created by GitHub Classroom
+
 Project Name: Old Maid
+
 Authors: Jackson Small, Chris Jung, Andrew Fields, Vihas Gowreddy
+
 IDE: IntelliJ
+
 Java Version: 1.8
+
 Note: In order to compile in a version past Java 1.8, JavaFX must be properly configured. In addition, the four Java files in
       "libs" must be added to the library. Files > Project Structure > Modules > Dependencies > Add > (jsonbeans-0.5.jar, junit-4.6.jar,
       kryo-2.23.1-SNAPSHOT-all-debug.jar, minlog-none-1.2.jar)
