@@ -7,12 +7,12 @@ public class Card {
 	private int value;
 	
 	//default constructor
-	Card(){
+	public Card(){
 		suit = null;
 		value = -1;
 	}
 	
-	Card(String s, int v){
+	public Card(String s, int v){
 		suit = s;
 		value = v;
 	}

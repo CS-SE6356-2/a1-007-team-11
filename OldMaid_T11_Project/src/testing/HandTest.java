@@ -2,6 +2,10 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import game.Card;
+import game.Game;
+import game.Hand;
+import game.Player;
 import org.junit.Test;
 
 public class HandTest {

@@ -2,6 +2,9 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import game.Deck;
+import game.Game;
+import game.Player;
 import org.junit.Test;
 
 public class GameTest {

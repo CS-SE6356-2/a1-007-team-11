@@ -2,6 +2,8 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import game.Card;
+import game.Deck;
 import org.junit.Test;
 
 public class DeckTest {

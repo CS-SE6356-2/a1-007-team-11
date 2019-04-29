@@ -2,6 +2,9 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import game.Card;
+import game.Hand;
+import game.Player;
 import org.junit.Test;
 
 public class PlayerTest {
@@ -16,8 +19,7 @@ public class PlayerTest {
 		testHand.addCard(testCard);
 		
 		testPlayer2.chooseCard(testPlayer1);
-		assertEquals("chooseCard should decrement hand size of target player and increment hand size of calling player",
-					  testPlayer1.hand.handSize + 1, testPlayer2.hand.handSize);
+		assertEquals("chooseCard should decrement hand size of target player and increment hand size of calling player",testPlayer1.hand.handSize + 1, testPlayer2.hand.handSize);
 	}
 	
 	@org.junit.Test
