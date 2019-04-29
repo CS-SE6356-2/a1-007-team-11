@@ -11,7 +11,6 @@ public class PlayerTest {
 
 	@org.junit.Test
 	public void chooseCardDecrementTest() {
-		int oldSize, newSize;
 		Player testPlayer1 = new Player();
 		Player testPlayer2 = new Player();
 		Hand testHand = testPlayer1.hand;
@@ -19,7 +18,7 @@ public class PlayerTest {
 		testHand.addCard(testCard);
 		
 		testPlayer2.chooseCard(testPlayer1);
-		assertEquals("chooseCard should decrement hand size of target player and increment hand size of calling player",testPlayer1.hand.handSize + 1, testPlayer2.hand.handSize);
+		assertEquals("chooseCard should decrement hand size of target player and increment hand size of calling player",testPlayer1.hand.handSize.intValue() + 1, testPlayer2.hand.handSize.intValue());
 	}
 	
 	@org.junit.Test
