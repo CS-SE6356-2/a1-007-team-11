@@ -166,18 +166,23 @@ public class Graphics implements Initializable{
 			while(cardAccepted==-1){
 				cardAccepted=displayCardSelectionPrompt();
 			}
+			try{
+				game.currentPlayer.takeCard(cardAccepted);
+			}catch (IndexOutOfBoundsException | NullPointerException x){
+
+			}
 			game.currentPlayer.takeCard(cardAccepted);
 			game.currentPlayer.hand.discardPairs();
 			m.changeScene("../gui/View.fxml");
 		}else{
 			String losing_player = "";
-			for(Player temp : game.playerList){
-				if(temp.hand.handSize == 1){
-					losing_player = temp.getName();
-					break;
+			for(int i=0; i<game.playerList.size();i++){
+				if(game.playerList.get(i).hand.myHand.size()==1){
+					losing_player=game.playerList.get(i).getName();
 				}
 			}
-			displaySelectionAlert("Game Over", "Game Over.\n" + losing_player + " is the loser!");
+			String loserString="Game Over.\n" + losing_player + " is the loser!";
+			displaySelectionAlert("Game Over", loserString);
 			storeStage.close();
 		}
 
