@@ -163,6 +163,7 @@ public class Graphics implements Initializable{
 			game.passTurn();
 			m.changeScene("../gui/View.fxml");
 			cardAccepted=displayCardSelectionPrompt();
+			System.out.println(cardAccepted);
 			while(cardAccepted==-1){
 				cardAccepted=displayCardSelectionPrompt();
 			}
@@ -171,7 +172,7 @@ public class Graphics implements Initializable{
 			}catch (IndexOutOfBoundsException | NullPointerException x){
 
 			}
-			game.currentPlayer.takeCard(cardAccepted);
+//			game.currentPlayer.takeCard(cardAccepted);
 			game.currentPlayer.hand.discardPairs();
 			m.changeScene("../gui/View.fxml");
 		}else{
@@ -190,17 +191,42 @@ public class Graphics implements Initializable{
 
 	public static int displayCardSelectionPrompt(){
 		final int[] cardLocation = new int[1];
+		Stage cardSelectionPromptWindow= new Stage();
+		cardSelectionPromptWindow.initModality(Modality.APPLICATION_MODAL);
+		cardSelectionPromptWindow.setTitle("Card Selection");
+		cardSelectionPromptWindow.setMinWidth(300);
+		Label msgLabel=new Label();
+		VBox layout=new VBox();
 		if(game.prevPlayer.hand.myHand.size()==0){
+			msgLabel.setText("There are no cards to be taken from\n "+game.prevPlayer.getName()+"'s hand.");
+			msgLabel.setPadding(new Insets(10,10,5,10));
+			msgLabel.setAlignment(Pos.CENTER);
+			msgLabel.setId("titleLabel");
+
+			Button submitInput=new Button();
+			submitInput.setText("Next");
+			submitInput.setId("joinButton");
+
+			layout.getChildren().addAll(msgLabel,submitInput);
+			layout.setAlignment(Pos.CENTER);
+			layout.setSpacing(5);
+			layout.setId("vBoxMenu");
+
+			Scene scene= new Scene(layout,400, 300);
+			scene.getStylesheets().add("/css/stylesheet.css");
+
+
+			submitInput.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event)	 {
+					cardSelectionPromptWindow.close();
+				}
+			});
+			cardSelectionPromptWindow.setScene(scene);
+			cardSelectionPromptWindow.show();
 			return 0;
 		}else{
 			String prompt= "Choose a card between 1 and "+game.prevPlayer.hand.myHand.size()+"\nto take from "+game.prevPlayer.getName()+"'s hand.";
-			Stage cardSelectionPromptWindow= new Stage();
-			cardSelectionPromptWindow.initModality(Modality.APPLICATION_MODAL);
-			cardSelectionPromptWindow.setTitle("Card Selection");
-			cardSelectionPromptWindow.setMinWidth(300);
-
-
-			Label msgLabel=new Label();
 			msgLabel.setText(prompt);
 			msgLabel.setPadding(new Insets(10,10,5,10));
 			msgLabel.setAlignment(Pos.CENTER);
@@ -247,7 +273,6 @@ public class Graphics implements Initializable{
 			hBoxInput.setSpacing(5);
 			hBoxInput.setPadding(new Insets(15,15,15,15));
 
-			VBox layout=new VBox();
 			layout.getChildren().addAll(msgLabel,hBoxInput,prevPlayerHand);
 			layout.setAlignment(Pos.CENTER);
 			layout.setSpacing(5);

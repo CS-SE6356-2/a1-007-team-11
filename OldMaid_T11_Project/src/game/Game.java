@@ -60,6 +60,8 @@ public class Game
 			this.currentPlayer= playerList.get(0);
 			this.prevPlayer=playerList.get(cPlayerIndex);
 		}
+
+
 	}
 
 	public String[] toPlayerNamesArr(){

@@ -40,6 +40,7 @@ public class Hand {
 	}
 	
 	public void removeCard(Player targetPlayer, int targetIndex) {
+		System.out.println("Taking "+targetIndex+" from "+targetPlayer.getName());
 		Card targetCard = targetPlayer.hand.myHand.get(targetIndex);
 		targetPlayer.hand.myHand.remove(targetIndex);
 		this.addCard(targetCard);
