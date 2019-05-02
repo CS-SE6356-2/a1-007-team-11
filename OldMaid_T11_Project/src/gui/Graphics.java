@@ -60,8 +60,8 @@ public class Graphics implements Initializable{
 		drawPlayerHand(game.currentPlayer);
 		updateView(cardPane);
 		drawOpponentsHands();
-		storeStage.setFullScreen(true);
-		storeStage.setResizable(false);
+		//storeStage.setFullScreen(true);
+		storeStage.setResizable(true);
 		scrollPane.setContent(cardPane);
 	}
 
